@@ -5,84 +5,106 @@
 
 /* CSS Variables - Light Theme (Default) */
 :root {
-  /* Background colors */
-  --bg-primary: #FAFAF8;
-  --bg-secondary: #F5F4F0;
-  --bg-tertiary: #ECEAE3;
+  /* Background colors - Clean, modern neutrals with subtle warmth */
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #F5F5F4;
+  --bg-tertiary: #EEEEEE;
   --bg-card: #FFFFFF;
-  --bg-hover: #F0EEE8;
+  --bg-hover: #F0F0EE;
 
-  /* Text colors */
-  --text-primary: #1C1917;
-  --text-secondary: #57534E;
-  --text-tertiary: #A8A29E;
+  /* Text colors - High contrast for readability */
+  --text-primary: #171717;
+  --text-secondary: #525252;
+  --text-tertiary: #A3A3A3;
+  --text-muted: #D4D4D4;
 
   /* Border colors */
-  --border-default: #E7E5E0;
-  --border-strong: #D6D3CD;
+  --border-default: #E5E5E5;
+  --border-strong: #D4D4D4;
+  --border-primary: #E5E5E5;
 
-  /* Accent colors */
-  --accent-primary: #B45309;
-  --accent-primary-hover: #92400E;
-  --accent-secondary: #166534;
-  --accent-secondary-hover: #14532D;
-  --accent-danger: #B91C1C;
-  --accent-danger-hover: #991B1B;
-  --accent-info: #1E40AF;
-  --accent-warning: #A16207;
+  /* Accent colors - Modern teal/emerald palette */
+  --accent-primary: #0D9488;
+  --accent-primary-hover: #0F766E;
+  --accent-secondary: #059669;
+  --accent-secondary-hover: #047857;
+  --accent-success: #059669;
+  --accent-danger: #DC2626;
+  --accent-danger-hover: #B91C1C;
+  --accent-info: #2563EB;
+  --accent-warning: #D97706;
 
   /* Transaction colors */
-  --income: #166534;
-  --expense: #B91C1C;
-  --transfer: #1E40AF;
+  --income: #059669;
+  --expense: #DC2626;
+  --transfer: #2563EB;
 
-  /* Chart colors */
-  --chart-1: #B45309;
-  --chart-2: #166534;
-  --chart-3: #1E40AF;
-  --chart-4: #7C2D12;
-  --chart-5: #4338CA;
-  --chart-6: #0F766E;
-  --chart-7: #BE185D;
-  --chart-8: #4D7C0F;
+  /* Chart colors - Vibrant, modern palette */
+  --chart-1: #0D9488;
+  --chart-2: #059669;
+  --chart-3: #2563EB;
+  --chart-4: #7C3AED;
+  --chart-5: #DB2777;
+  --chart-6: #EA580C;
+  --chart-7: #0891B2;
+  --chart-8: #65A30D;
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
 }
 
-/* CSS Variables - Dark Theme */
+/* CSS Variables - Dark Theme - Modern slate with better readability */
 .dark {
-  --bg-primary: #0C0A09;
-  --bg-secondary: #1C1917;
-  --bg-tertiary: #292524;
-  --bg-card: #1C1917;
-  --bg-hover: #292524;
+  /* Backgrounds - Slightly warmer dark slate, easier on eyes */
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --bg-tertiary: #2A2A2A;
+  --bg-card: #1A1A1A;
+  --bg-hover: #2D2D2D;
 
-  --text-primary: #FAFAF9;
-  --text-secondary: #A8A29E;
-  --text-tertiary: #78716C;
+  /* Text - High contrast with warm undertones */
+  --text-primary: #F5F5F5;
+  --text-secondary: #B0B0B0;
+  --text-tertiary: #737373;
+  --text-muted: #525252;
 
-  --border-default: #292524;
-  --border-strong: #44403C;
+  /* Borders */
+  --border-default: #2D2D2D;
+  --border-strong: #404040;
+  --border-primary: #333333;
 
-  --accent-primary: #D97706;
-  --accent-primary-hover: #F59E0B;
-  --accent-secondary: #22C55E;
-  --accent-secondary-hover: #4ADE80;
-  --accent-danger: #EF4444;
-  --accent-danger-hover: #F87171;
-  --accent-info: #3B82F6;
-  --accent-warning: #EAB308;
+  /* Accents - Brighter for dark mode visibility */
+  --accent-primary: #14B8A6;
+  --accent-primary-hover: #2DD4BF;
+  --accent-secondary: #10B981;
+  --accent-secondary-hover: #34D399;
+  --accent-success: #10B981;
+  --accent-danger: #F87171;
+  --accent-danger-hover: #FCA5A5;
+  --accent-info: #60A5FA;
+  --accent-warning: #FBBF24;
 
-  --income: #22C55E;
-  --expense: #EF4444;
-  --transfer: #3B82F6;
+  /* Transaction colors - Brighter for dark mode */
+  --income: #34D399;
+  --expense: #F87171;
+  --transfer: #60A5FA;
 
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+  /* Chart colors - Vibrant for dark backgrounds */
+  --chart-1: #14B8A6;
+  --chart-2: #10B981;
+  --chart-3: #60A5FA;
+  --chart-4: #A78BFA;
+  --chart-5: #F472B6;
+  --chart-6: #FB923C;
+  --chart-7: #22D3EE;
+  --chart-8: #A3E635;
+
+  /* Shadows - Subtle glow effect */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.3);
 }
 
 /* Tailwind Theme Configuration */

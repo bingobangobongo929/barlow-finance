@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { formatCurrency, formatDate, formatPercentage, cn } from "@/lib/utils";
+import { getMerchantInfo } from "@/lib/merchant-icons";
 import type { Profile, Transaction, UpcomingExpense, Budget, Project, AIInsight } from "@/lib/types";
 
 interface DashboardContentProps {
@@ -193,21 +194,27 @@ export function DashboardContent({
             <CardContent>
               {recentTransactions.length > 0 ? (
                 <div className="space-y-3">
-                  {recentTransactions.map((transaction) => (
+                  {recentTransactions.map((transaction) => {
+                    const merchant = getMerchantInfo(transaction.description);
+                    return (
                     <div
                       key={transaction.id}
                       className="flex items-center justify-between rounded-lg p-2 hover:bg-[var(--bg-hover)]"
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className="flex h-9 w-9 items-center justify-center rounded-lg"
+                          className="flex h-9 w-9 items-center justify-center rounded-lg text-lg"
                           style={{
-                            backgroundColor: transaction.category?.color
+                            backgroundColor: merchant.matched
+                              ? `${merchant.color}15`
+                              : transaction.category?.color
                               ? `${transaction.category.color}20`
                               : "var(--bg-tertiary)",
                           }}
                         >
-                          {transaction.type === "income" ? (
+                          {merchant.matched ? (
+                            merchant.icon
+                          ) : transaction.type === "income" ? (
                             <TrendingUp className="h-4 w-4 text-[var(--income)]" />
                           ) : transaction.type === "expense" ? (
                             <TrendingDown className="h-4 w-4 text-[var(--expense)]" />
@@ -242,7 +249,8 @@ export function DashboardContent({
                         {formatCurrency(transaction.amount, locale)}
                       </span>
                     </div>
-                  ))}
+                  );
+                  })}
                 </div>
               ) : (
                 <div className="py-8 text-center text-sm text-[var(--text-secondary)]">

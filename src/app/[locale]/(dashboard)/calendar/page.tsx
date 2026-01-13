@@ -88,16 +88,15 @@ export default function CalendarPage() {
         .from("loans")
         .select("id, name, payment_amount, start_date, payment_frequency")
         .eq("household_id", profile.household_id)
-        .eq("status", "active");
+        .eq("is_active", true);
 
-      // Fetch vehicle maintenance
+      // Fetch vehicle maintenance with upcoming due dates
       const { data: maintenance } = await supabase
         .from("vehicle_maintenance")
-        .select("id, description, scheduled_date, cost, vehicles(name)")
-        .eq("vehicles.household_id", profile.household_id)
-        .gte("scheduled_date", format(monthStart, "yyyy-MM-dd"))
-        .lte("scheduled_date", format(monthEnd, "yyyy-MM-dd"))
-        .eq("is_completed", false);
+        .select("id, description, next_due_date, cost, vehicle:vehicles(nickname)")
+        .not("next_due_date", "is", null)
+        .gte("next_due_date", format(monthStart, "yyyy-MM-dd"))
+        .lte("next_due_date", format(monthEnd, "yyyy-MM-dd"));
 
       const calendarEvents: CalendarEvent[] = [];
 
@@ -138,8 +137,8 @@ export default function CalendarPage() {
       (maintenance || []).forEach((m: any) => {
         calendarEvents.push({
           id: `maintenance-${m.id}`,
-          date: m.scheduled_date,
-          title: `${m.vehicles?.name}: ${m.description}`,
+          date: m.next_due_date,
+          title: `${m.vehicle?.nickname || "Vehicle"}: ${m.description}`,
           amount: m.cost,
           type: "maintenance",
         });

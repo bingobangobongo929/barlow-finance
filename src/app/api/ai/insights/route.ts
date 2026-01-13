@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { householdId } = await request.json();
+    const { householdId, language = "en" } = await request.json();
 
     if (!householdId) {
       return NextResponse.json(
@@ -34,6 +34,9 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    // Get language preference - default to English
+    const lang = language === "da" ? "Danish" : "English";
 
     // Get recent transactions for analysis
     const now = new Date();
@@ -98,7 +101,7 @@ export async function POST(request: Request) {
       messages: [
         {
           role: "user",
-          content: `Analyze this household financial data and provide 1-2 brief, actionable insights in JSON format.
+          content: `Analyze this household financial data and provide 1-2 brief, actionable insights in JSON format. IMPORTANT: Respond in ${lang}.
 
 Last 30 days:
 - Income: ${recentIncome.toFixed(0)} DKK
@@ -109,14 +112,14 @@ Previous 30 days:
 - Income: ${priorIncome.toFixed(0)} DKK
 - Expenses: ${priorExpenses.toFixed(0)} DKK
 
-Respond with a JSON array of insights. Each insight should have:
-- "type": one of "spending_alert", "savings_opportunity", "trend", "recommendation"
-- "title": short title (max 50 chars)
-- "description": brief description (max 150 chars)
+Respond with a JSON array of insights in ${lang}. Each insight should have:
+- "type": one of "spending_pattern", "saving_opportunity", "unusual_activity", "budget_alert", "milestone"
+- "title": short title in ${lang} (max 50 chars)
+- "content": brief description in ${lang} (max 150 chars)
 - "priority": "high", "medium", or "low"
 
-Example:
-[{"type": "spending_alert", "title": "Dining out increased", "description": "Restaurant spending is up 30% this month. Consider cooking more at home.", "priority": "medium"}]`,
+Example (in English):
+[{"type": "spending_pattern", "title": "Dining out increased", "content": "Restaurant spending is up 30% this month. Consider cooking more at home.", "priority": "medium"}]`,
         },
       ],
     });
@@ -140,11 +143,14 @@ Example:
     for (const insight of insights) {
       await supabase.from("ai_insights").insert({
         household_id: householdId,
-        insight_type: insight.type,
+        type: insight.type,
         title: insight.title,
-        description: insight.description,
-        priority: insight.priority,
-        data: { generated: new Date().toISOString() },
+        content: insight.content,
+        data: {
+          generated: new Date().toISOString(),
+          priority: insight.priority,
+          language: language
+        },
       });
     }
 

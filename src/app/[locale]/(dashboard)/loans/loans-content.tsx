@@ -139,13 +139,13 @@ export function LoansContent({
         original_amount: originalAmount,
         current_balance: currentBalance,
         interest_rate: interestRate,
+        interest_type: "fixed" as const, // Default to fixed
         payment_amount: paymentAmount,
         payment_frequency: formData.payment_frequency,
         start_date: formData.start_date || null,
         expected_end_date: formData.expected_end_date || null,
-        loan_type: formData.loan_type,
         notes: formData.notes.trim() || null,
-        status: currentBalance <= 0 ? "paid_off" : "active",
+        is_active: currentBalance > 0,
       };
 
       if (isEdit && selectedLoan) {

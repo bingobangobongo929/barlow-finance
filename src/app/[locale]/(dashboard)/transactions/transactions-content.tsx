@@ -34,6 +34,7 @@ import { Dropdown, DropdownItem } from "@/components/ui/dropdown";
 import { DatePicker } from "@/components/ui/date-picker";
 import { useErrorToast, useSuccessToast } from "@/components/ui/toast";
 import { formatCurrency, formatDate } from "@/lib/utils";
+import { getMerchantInfo } from "@/lib/merchant-icons";
 import type { Transaction, Category, Account } from "@/lib/types";
 
 interface TransactionsContentProps {
@@ -570,21 +571,39 @@ export function TransactionsContent({
                       {formatDate(transaction.transaction_date, locale)}
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2">
-                        {transaction.is_recurring && (
-                          <Badge variant="default" className="text-xs">
-                            {t("recurring")}
-                          </Badge>
-                        )}
-                        <span className="text-sm font-medium text-[var(--text-primary)]">
-                          {transaction.description}
-                        </span>
+                      <div className="flex items-center gap-3">
+                        {(() => {
+                          const merchant = getMerchantInfo(transaction.description);
+                          if (merchant.matched) {
+                            return (
+                              <div
+                                className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-lg"
+                                style={{ backgroundColor: `${merchant.color}15` }}
+                              >
+                                {merchant.icon}
+                              </div>
+                            );
+                          }
+                          return null;
+                        })()}
+                        <div>
+                          <div className="flex items-center gap-2">
+                            {transaction.is_recurring && (
+                              <Badge variant="default" className="text-xs">
+                                {t("recurring")}
+                              </Badge>
+                            )}
+                            <span className="text-sm font-medium text-[var(--text-primary)]">
+                              {transaction.description}
+                            </span>
+                          </div>
+                          {transaction.notes && (
+                            <p className="mt-1 text-xs text-[var(--text-muted)] line-clamp-1">
+                              {transaction.notes}
+                            </p>
+                          )}
+                        </div>
                       </div>
-                      {transaction.notes && (
-                        <p className="mt-1 text-xs text-[var(--text-muted)] line-clamp-1">
-                          {transaction.notes}
-                        </p>
-                      )}
                     </td>
                     <td className="px-4 py-3">
                       {transaction.category ? (

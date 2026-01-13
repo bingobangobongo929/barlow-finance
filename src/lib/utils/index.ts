@@ -52,8 +52,8 @@ export function formatPercentage(
 
 export function formatDate(
   date: string | Date,
-  formatString: string = "dd-MM-yyyy",
-  locale: "en" | "da" = "da"
+  formatStringOrLocale: string = "dd-MM-yyyy",
+  locale?: "en" | "da"
 ): string {
   const dateObj = typeof date === "string" ? parseISO(date) : date;
 
@@ -61,8 +61,13 @@ export function formatDate(
     return "";
   }
 
-  return format(dateObj, formatString, {
-    locale: locale === "da" ? da : enUS,
+  // Support both (date, locale) and (date, formatString, locale) signatures
+  const isLocaleArg = formatStringOrLocale === "en" || formatStringOrLocale === "da";
+  const actualFormat = isLocaleArg ? "dd-MM-yyyy" : formatStringOrLocale;
+  const actualLocale = locale ?? (isLocaleArg ? formatStringOrLocale as "en" | "da" : "da");
+
+  return format(dateObj, actualFormat, {
+    locale: actualLocale === "da" ? da : enUS,
   });
 }
 

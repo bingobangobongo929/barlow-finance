@@ -106,7 +106,7 @@ export default async function TransactionsPage({
       .from("categories")
       .select("*")
       .or(`household_id.eq.${profile.household_id},is_system.eq.true`)
-      .order("name_en"),
+      .order("name"),
     supabase
       .from("accounts")
       .select("*")

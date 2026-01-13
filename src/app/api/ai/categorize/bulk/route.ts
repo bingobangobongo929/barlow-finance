@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     // Get available categories
     const { data: categories } = await supabase
       .from("categories")
-      .select("id, name_en, name_da, type")
+      .select("id, name, name_da, type")
       .or(`household_id.eq.${householdId},is_system.eq.true`);
 
     if (!categories || categories.length === 0) {
@@ -98,10 +98,10 @@ export async function POST(request: Request) {
       const incomeCategories = categories.filter((c) => c.type === "income");
 
       const categoryListExpense = expenseCategories
-        .map((c) => `${c.id}: ${c.name_en}`)
+        .map((c) => `${c.id}: ${c.name}`)
         .join(", ");
       const categoryListIncome = incomeCategories
-        .map((c) => `${c.id}: ${c.name_en}`)
+        .map((c) => `${c.id}: ${c.name}`)
         .join(", ");
 
       const transactionsList = transactionsNeedingAI

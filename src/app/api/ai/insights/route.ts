@@ -44,13 +44,13 @@ export async function POST(request: Request) {
       await Promise.all([
         supabase
           .from("transactions")
-          .select("amount, type, category:categories(name_en)")
+          .select("amount, type, category:categories(name)")
           .eq("household_id", householdId)
           .gte("transaction_date", thirtyDaysAgo.toISOString().split("T")[0])
           .lte("transaction_date", now.toISOString().split("T")[0]),
         supabase
           .from("transactions")
-          .select("amount, type, category:categories(name_en)")
+          .select("amount, type, category:categories(name)")
           .eq("household_id", householdId)
           .gte("transaction_date", sixtyDaysAgo.toISOString().split("T")[0])
           .lt("transaction_date", thirtyDaysAgo.toISOString().split("T")[0]),
@@ -80,7 +80,7 @@ export async function POST(request: Request) {
     recentTransactions
       .filter((t) => t.type === "expense" && t.category)
       .forEach((t: any) => {
-        const categoryName = t.category.name_en || "Uncategorized";
+        const categoryName = t.category.name || "Uncategorized";
         categoryBreakdown[categoryName] =
           (categoryBreakdown[categoryName] || 0) + Math.abs(Number(t.amount));
       });

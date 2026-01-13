@@ -193,7 +193,7 @@ function processCategoryData(
   return Object.entries(categoryTotals)
     .map(([id, data]) => ({
       id,
-      name: locale === "da" ? data.category.name_da : data.category.name_en,
+      name: locale === "da" ? data.category.name_da : data.category.name,
       icon: data.category.icon,
       amount: data.amount,
       color: data.category.color || "#6b7280",

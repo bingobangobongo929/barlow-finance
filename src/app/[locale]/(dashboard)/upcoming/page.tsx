@@ -98,7 +98,7 @@ export default function UpcomingExpensesPage() {
             .select("*")
             .or(`household_id.eq.${profile.household_id},is_system.eq.true`)
             .eq("type", "expense")
-            .order("name_en"),
+            .order("name"),
         ]);
 
       setExpenses(expensesData || []);

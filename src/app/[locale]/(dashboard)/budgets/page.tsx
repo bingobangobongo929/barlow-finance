@@ -58,7 +58,7 @@ export default async function BudgetsPage({ params }: BudgetsPageProps) {
     .select("*")
     .or(`household_id.eq.${profile.household_id},is_system.eq.true`)
     .eq("type", "expense")
-    .order("name_en");
+    .order("name");
 
   // Calculate spent amounts for each budget
   const budgetsWithSpent = await Promise.all(

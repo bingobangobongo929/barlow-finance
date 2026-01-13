@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     // Get available categories
     const { data: categories } = await supabase
       .from("categories")
-      .select("id, name_en, name_da, type")
+      .select("id, name, name_da, type")
       .or(`household_id.eq.${householdId},is_system.eq.true`)
       .eq("type", type);
 
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
 
     // Use Claude for categorization
     const categoryList = categories
-      .map((c) => `- ${c.id}: ${c.name_en}`)
+      .map((c) => `- ${c.id}: ${c.name}`)
       .join("\n");
 
     const message = await anthropic.messages.create({

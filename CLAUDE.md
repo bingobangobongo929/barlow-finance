@@ -309,6 +309,81 @@ if (!rateLimitResult.allowed) {
 - Numbers: Danish separators (comma decimal, period thousand)
 - Account numbers: Always masked (****1234)
 
+## Component Type Usage (CRITICAL)
+
+These component prop patterns are established and MUST be followed:
+
+### Modal Component
+```tsx
+// CORRECT - use isOpen
+<Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+
+// WRONG - 'open' doesn't exist
+<Modal open={showModal}>
+```
+
+### Button Component
+```tsx
+// Valid variants: "default", "secondary", "ghost", "danger", "success", "link"
+<Button variant="default">Primary Action</Button>
+<Button variant="secondary">Secondary Action</Button>
+
+// WRONG - these variants don't exist
+<Button variant="primary">   // Use "default" instead
+<Button variant="outline">   // Use "secondary" instead
+
+// Button does NOT support asChild - use styled Link instead:
+<Link
+  href="/path"
+  className="inline-flex items-center justify-center rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-tertiary)]"
+>
+  Link Text
+</Link>
+```
+
+### Type Imports for Form Data
+When using enum types in state, use inline imports:
+```tsx
+// CORRECT
+const [formData, setFormData] = useState({
+  fuel_type: "petrol" as import("@/lib/types").FuelType,
+  type: "oil" as import("@/lib/types").MaintenanceType,
+  recurrence: "once" as import("@/lib/types").RecurrenceType,
+});
+
+// For interface props
+interface FormProps {
+  formData: {
+    type: import('@/lib/types').MaintenanceType;
+    // ...
+  };
+}
+```
+
+### Database Field Mappings
+- Vehicle: `nickname` (not `name`)
+- Vehicle Maintenance: `type` (not `maintenance_type`), `service_date` (not `scheduled_date`)
+- Upcoming Expense: `recurrence` (not `is_recurring`/`recurring_frequency`)
+- Category: `name` (not `name_en`)
+
+### Zod Validation
+```tsx
+// CORRECT - z.record requires two arguments
+z.record(z.string(), z.unknown())
+
+// WRONG
+z.record(z.unknown())
+```
+
+### useRef with NodeJS.Timeout
+```tsx
+// CORRECT - must initialize with null
+const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+// WRONG
+const timeoutRef = useRef<NodeJS.Timeout>();
+```
+
 ## Remember
 - Check CLAUDE.md before EVERY file
 - NO TODO comments

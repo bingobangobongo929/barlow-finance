@@ -53,14 +53,16 @@ export default async function VehiclesPage({ params }: VehiclesPageProps) {
         .from("vehicle_maintenance")
         .select("*")
         .eq("vehicle_id", vehicle.id)
-        .order("scheduled_date", { ascending: false });
+        .order("service_date", { ascending: false });
 
+      // All maintenance records represent completed services
       const totalCost = (maintenanceRecords || [])
-        .filter((m) => m.is_completed)
         .reduce((sum, m) => sum + (m.cost || 0), 0);
 
+      // Upcoming maintenance is based on next_due_date being in the future
+      const now = new Date();
       const upcomingMaintenance = (maintenanceRecords || []).filter(
-        (m) => !m.is_completed
+        (m) => m.next_due_date && new Date(m.next_due_date) > now
       );
 
       return {

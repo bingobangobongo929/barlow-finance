@@ -116,7 +116,7 @@ export function VehiclesContent({
     try {
       const vehicleData = {
         household_id: householdId,
-        name: formData.nickname.trim(),
+        nickname: formData.nickname.trim(),
         make: formData.make.trim() || null,
         model: formData.model.trim() || null,
         year: formData.year ? parseInt(formData.year, 10) : null,

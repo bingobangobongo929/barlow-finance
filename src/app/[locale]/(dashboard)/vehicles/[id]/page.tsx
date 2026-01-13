@@ -195,10 +195,13 @@ export default function VehicleDetailPage() {
 
   const markComplete = async (m: VehicleMaintenance) => {
     try {
+      const today = new Date().toISOString().split("T")[0];
       const { error } = await supabase
         .from("vehicle_maintenance")
         .update({
-          })
+          service_date: today,
+          next_due_date: null,
+        })
         .eq("id", m.id);
 
       if (error) throw error;
@@ -209,7 +212,9 @@ export default function VehicleDetailPage() {
           item.id === m.id
             ? {
                 ...item,
-                }
+                service_date: today,
+                next_due_date: null,
+              }
             : item
         )
       );

@@ -765,7 +765,7 @@ function ProjectForm({
         </div>
 
         <div className="form-group">
-          <Label htmlFor="priority">{t("priority")}</Label>
+          <Label htmlFor="priority">{t("priorityLabel")}</Label>
           <Select
             id="priority"
             value={formData.priority}
@@ -782,7 +782,7 @@ function ProjectForm({
 
       {isEdit && (
         <div className="form-group">
-          <Label htmlFor="status">{t("status")}</Label>
+          <Label htmlFor="status">{t("statusLabel")}</Label>
           <Select
             id="status"
             value={formData.status}

@@ -591,18 +591,12 @@
     "descriptionPlaceholder": "Hvad sparer du op til?",
     "targetAmount": "Målbeløb",
     "currentAmount": "Nuværende beløb",
-    "priority": "Prioritet",
-    "status": "Status",
+    "priorityLabel": "Prioritet",
+    "statusLabel": "Status",
     "icon": "Ikon",
     "color": "Farve",
     "amount": "Beløb",
     "invalidAmount": "Indtast venligst et gyldigt beløb",
-    "status": {
-      "active": "Aktiv",
-      "paused": "På pause",
-      "completed": "Fuldført",
-      "cancelled": "Annulleret"
-    },
     "priority": {
       "high": "Høj prioritet",
       "medium": "Medium prioritet",

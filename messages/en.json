@@ -591,18 +591,12 @@
     "descriptionPlaceholder": "What are you saving for?",
     "targetAmount": "Target Amount",
     "currentAmount": "Current Amount",
-    "priority": "Priority",
-    "status": "Status",
+    "priorityLabel": "Priority",
+    "statusLabel": "Status",
     "icon": "Icon",
     "color": "Color",
     "amount": "Amount",
     "invalidAmount": "Please enter a valid amount",
-    "status": {
-      "active": "Active",
-      "paused": "Paused",
-      "completed": "Completed",
-      "cancelled": "Cancelled"
-    },
     "priority": {
       "high": "High priority",
       "medium": "Medium priority",

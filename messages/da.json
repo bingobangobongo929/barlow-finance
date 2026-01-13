@@ -1,0 +1,872 @@
+{
+  "common": {
+    "save": "Gem",
+    "cancel": "Annuller",
+    "delete": "Slet",
+    "edit": "Rediger",
+    "add": "Tilføj",
+    "search": "Søg",
+    "filter": "Filtrer",
+    "sort": "Sortér",
+    "export": "Eksportér",
+    "import": "Importér",
+    "upload": "Upload",
+    "download": "Download",
+    "view": "Vis",
+    "hide": "Skjul",
+    "showAll": "Vis alle",
+    "loading": "Indlæser",
+    "error": "Fejl",
+    "success": "Succes",
+    "warning": "Advarsel",
+    "confirm": "Bekræft",
+    "close": "Luk",
+    "back": "Tilbage",
+    "next": "Næste",
+    "previous": "Forrige",
+    "submit": "Indsend",
+    "reset": "Nulstil",
+    "clear": "Ryd",
+    "apply": "Anvend",
+    "refresh": "Opdater",
+    "retry": "Prøv igen",
+    "yes": "Ja",
+    "no": "Nej",
+    "or": "eller",
+    "and": "og",
+    "of": "af",
+    "to": "til",
+    "from": "Fra",
+    "all": "Alle",
+    "none": "Ingen",
+    "select": "Vælg",
+    "selected": "valgt",
+    "noData": "Ingen data tilgængelig",
+    "noResults": "Ingen resultater fundet",
+    "required": "Påkrævet",
+    "optional": "Valgfri",
+    "currency": "DKK",
+    "currencySymbol": "kr.",
+    "today": "I dag",
+    "yesterday": "I går",
+    "thisWeek": "Denne uge",
+    "lastWeek": "Sidste uge",
+    "thisMonth": "Denne måned",
+    "lastMonth": "Sidste måned",
+    "thisYear": "I år",
+    "lastYear": "Sidste år",
+    "custom": "Brugerdefineret",
+    "actions": "Handlinger",
+    "details": "Detaljer",
+    "overview": "Oversigt",
+    "settings": "Indstillinger",
+    "profile": "Profil",
+    "logout": "Log ud",
+    "login": "Log ind",
+    "register": "Registrer",
+    "welcome": "Velkommen",
+    "home": "Hjem"
+  },
+  "navigation": {
+    "dashboard": "Oversigt",
+    "transactions": "Transaktioner",
+    "budgets": "Budgetter",
+    "analytics": "Analyser",
+    "loans": "Lån",
+    "projects": "Projekter",
+    "calendar": "Kalender",
+    "vehicles": "Køretøjer",
+    "upcoming": "Kommende udgifter",
+    "settings": "Indstillinger",
+    "collapse": "Skjul sidepanel",
+    "expand": "Vis sidepanel"
+  },
+  "header": {
+    "appName": "Barlow Finance",
+    "toggleTheme": "Skift tema",
+    "toggleLanguage": "Skift sprog",
+    "lightMode": "Lys tilstand",
+    "darkMode": "Mørk tilstand",
+    "userMenu": "Brugermenu",
+    "notifications": "Notifikationer"
+  },
+  "auth": {
+    "login": {
+      "title": "Velkommen tilbage",
+      "subtitle": "Log ind på din konto",
+      "email": "E-mailadresse",
+      "password": "Adgangskode",
+      "rememberMe": "Husk mig",
+      "forgotPassword": "Glemt adgangskode?",
+      "submit": "Log ind",
+      "noAccount": "Har du ikke en konto?",
+      "signUp": "Opret konto",
+      "invalidCredentials": "Ugyldig e-mail eller adgangskode",
+      "tooManyAttempts": "For mange loginforsøg. Prøv igen om {minutes} minutter.",
+      "sessionExpired": "Din session er udløbet. Log venligst ind igen."
+    },
+    "register": {
+      "title": "Opret din konto",
+      "subtitle": "Begynd at administrere din husstandsøkonomi",
+      "displayName": "Visningsnavn",
+      "email": "E-mailadresse",
+      "password": "Adgangskode",
+      "confirmPassword": "Bekræft adgangskode",
+      "householdName": "Husstandsnavn",
+      "householdNameHint": "f.eks. 'Familien Barlow'",
+      "submit": "Opret konto",
+      "hasAccount": "Har du allerede en konto?",
+      "signIn": "Log ind",
+      "passwordRequirements": "Adgangskoden skal være mindst 8 tegn med store og små bogstaver, tal og specialtegn",
+      "passwordMismatch": "Adgangskoderne matcher ikke",
+      "emailInUse": "Denne e-mail er allerede registreret"
+    },
+    "invite": {
+      "title": "Tilslut husstand",
+      "subtitle": "Du er blevet inviteret til at tilslutte dig {household}",
+      "accept": "Accepter invitation",
+      "decline": "Afvis",
+      "expired": "Denne invitation er udløbet",
+      "invalid": "Ugyldigt invitationslink",
+      "alreadyUsed": "Denne invitation er allerede blevet brugt",
+      "success": "Du har tilsluttet dig husstanden!"
+    },
+    "logout": {
+      "confirm": "Er du sikker på, at du vil logge ud?",
+      "allDevices": "Log ud fra alle enheder",
+      "success": "Du er blevet logget ud"
+    },
+    "reauth": {
+      "title": "Bekræft din identitet",
+      "subtitle": "Indtast venligst din adgangskode for at fortsætte",
+      "password": "Nuværende adgangskode",
+      "submit": "Bekræft"
+    }
+  },
+  "dashboard": {
+    "title": "Oversigt",
+    "greeting": "Hej, {name}",
+    "thisMonth": "Denne måned",
+    "vsLastMonth": "vs sidste måned",
+    "stats": {
+      "income": "Indtægt",
+      "expenses": "Udgifter",
+      "netFlow": "Netto pengestrøm",
+      "savingsRate": "Opsparingsrate"
+    },
+    "budgetHealth": {
+      "title": "Budgetstatus",
+      "onTrack": "På sporet",
+      "warning": "Advarsel",
+      "overBudget": "Over budget",
+      "remaining": "{amount} tilbage",
+      "overBy": "{amount} over"
+    },
+    "recentTransactions": {
+      "title": "Seneste transaktioner",
+      "viewAll": "Se alle transaktioner",
+      "noTransactions": "Ingen seneste transaktioner"
+    },
+    "upcomingExpenses": {
+      "title": "Kommende udgifter",
+      "next30Days": "Næste 30 dage",
+      "viewAll": "Se alle kommende",
+      "noUpcoming": "Ingen kommende udgifter",
+      "dueIn": "Forfalder om {days} dage",
+      "dueToday": "Forfalder i dag",
+      "overdue": "Forfaldent"
+    },
+    "projects": {
+      "title": "Opsparingsprojekter",
+      "progress": "{percent}% finansieret",
+      "viewAll": "Se alle projekter"
+    },
+    "aiInsight": {
+      "title": "AI-indsigt",
+      "dismiss": "Afvis",
+      "viewMore": "Se flere indsigter"
+    }
+  },
+  "transactions": {
+    "title": "Transaktioner",
+    "addTransaction": "Tilføj transaktion",
+    "importTransactions": "Importér transaktioner",
+    "quickCategorize": "Hurtig kategorisering",
+    "filters": {
+      "dateRange": "Datointerval",
+      "category": "Kategori",
+      "account": "Konto",
+      "type": "Type",
+      "amountRange": "Beløbsinterval",
+      "uncategorized": "Kun ukategoriserede",
+      "clearFilters": "Ryd filtre"
+    },
+    "types": {
+      "all": "Alle",
+      "income": "Indtægt",
+      "expense": "Udgift",
+      "transfer": "Overførsel"
+    },
+    "table": {
+      "date": "Dato",
+      "description": "Beskrivelse",
+      "merchant": "Forretning",
+      "category": "Kategori",
+      "amount": "Beløb",
+      "account": "Konto",
+      "actions": "Handlinger"
+    },
+    "form": {
+      "title": "Transaktionsdetaljer",
+      "date": "Dato",
+      "description": "Beskrivelse",
+      "merchant": "Forretning",
+      "amount": "Beløb",
+      "type": "Type",
+      "category": "Kategori",
+      "account": "Konto",
+      "notes": "Noter",
+      "tags": "Tags",
+      "isRecurring": "Dette er en tilbagevendende transaktion"
+    },
+    "import": {
+      "title": "Importér transaktioner",
+      "step1": "Upload fil",
+      "step2": "Tilknyt kolonner",
+      "step3": "Gennemse og importér",
+      "selectFile": "Vælg CSV-fil",
+      "dragDrop": "eller træk og slip",
+      "supportedFormats": "Understøttede formater: CSV fra Danske Bank, Nordea, Jyske Bank, Sparekassen Kronjylland",
+      "selectBank": "Vælg din bank",
+      "detectFormat": "Automatisk format",
+      "columnMapping": "Kolonnetilknytning",
+      "preview": "Forhåndsvisning",
+      "rowsToImport": "{count} transaktioner at importere",
+      "duplicates": "{count} potentielle duplikater fundet",
+      "skipDuplicates": "Spring duplikater over",
+      "importing": "Importerer transaktioner...",
+      "success": "Importerede {count} transaktioner",
+      "error": "Fejl ved import af transaktioner"
+    },
+    "categorize": {
+      "title": "Hurtig kategorisering",
+      "uncategorized": "Ukategoriserede transaktioner",
+      "selectCategory": "Vælg kategori",
+      "createRule": "Opret regel for lignende transaktioner",
+      "ruleCreated": "Regel oprettet",
+      "skip": "Spring over",
+      "done": "Færdig!",
+      "remaining": "{count} tilbage"
+    },
+    "delete": {
+      "confirm": "Er du sikker på, at du vil slette denne transaktion?",
+      "success": "Transaktion slettet",
+      "bulkConfirm": "Er du sikker på, at du vil slette {count} transaktioner?"
+    },
+    "noTransactions": "Ingen transaktioner fundet",
+    "addFirst": "Tilføj din første transaktion eller importér fra din bank"
+  },
+  "budgets": {
+    "title": "Budgetter",
+    "addBudget": "Tilføj budget",
+    "period": {
+      "monthly": "Månedlig",
+      "quarterly": "Kvartalsvis",
+      "yearly": "Årlig"
+    },
+    "status": {
+      "onTrack": "På sporet",
+      "warning": "Advarsel",
+      "overBudget": "Over budget"
+    },
+    "card": {
+      "spent": "Brugt",
+      "budgeted": "Budgetteret",
+      "remaining": "Tilbage",
+      "overBy": "Over med"
+    },
+    "form": {
+      "title": "Budgetdetaljer",
+      "name": "Budgetnavn",
+      "category": "Kategori",
+      "amount": "Budgetbeløb",
+      "period": "Periode",
+      "startDate": "Startdato",
+      "endDate": "Slutdato",
+      "rollover": "Overfør ubrugt beløb",
+      "rolloverHint": "Ubrugt budget overføres til næste periode"
+    },
+    "delete": {
+      "confirm": "Er du sikker på, at du vil slette dette budget?",
+      "success": "Budget slettet"
+    },
+    "noBudgets": "Ingen budgetter opsat",
+    "addFirst": "Opret dit første budget for at begynde at spore forbrug"
+  },
+  "analytics": {
+    "title": "Analyser",
+    "tabs": {
+      "overview": "Oversigt",
+      "categories": "Kategorier",
+      "trends": "Tendenser",
+      "comparisons": "Sammenligninger",
+      "merchants": "Forretninger",
+      "personal": "Personlig"
+    },
+    "overview": {
+      "incomeVsExpenses": "Indtægt vs udgifter",
+      "netCashFlow": "Netto pengestrøm",
+      "savingsRate": "Opsparingsrate",
+      "topCategories": "Top udgiftskategorier"
+    },
+    "categories": {
+      "title": "Forbrug pr. kategori",
+      "breakdown": "Kategoriopdeling",
+      "trend": "Kategoritendenser"
+    },
+    "trends": {
+      "title": "Forbrugstendenser",
+      "monthlyAverage": "Månedligt gennemsnit",
+      "yearOverYear": "År over år"
+    },
+    "comparisons": {
+      "title": "Periodesammenligninger",
+      "thisVsLast": "Denne måned vs sidste måned",
+      "vsAverage": "vs gennemsnit"
+    },
+    "merchants": {
+      "title": "Top forretninger",
+      "frequency": "Transaktionshyppighed",
+      "totalSpent": "Samlet forbrug"
+    },
+    "personal": {
+      "title": "Personlig opdeling",
+      "byPerson": "Forbrug pr. person",
+      "sharedExpenses": "Delte udgifter"
+    },
+    "dateRange": "Datointerval",
+    "compare": "Sammenlign perioder"
+  },
+  "loans": {
+    "title": "Lån",
+    "addLoan": "Tilføj lån",
+    "activeLoan": "Aktiv",
+    "paidOff": "Afbetalt",
+    "summary": {
+      "totalDebt": "Samlet gæld",
+      "monthlyPayments": "Månedlige afdrag",
+      "interestThisYear": "Renter i år",
+      "payoffDate": "Tidligste afbetaling"
+    },
+    "card": {
+      "balance": "Nuværende saldo",
+      "payment": "Månedligt afdrag",
+      "rate": "Rentesats",
+      "payoffDate": "Afbetalingsdato"
+    },
+    "detail": {
+      "overview": "Oversigt",
+      "amortization": "Afbetalingsplan",
+      "payoffSimulator": "Afbetalingssimulator",
+      "payments": "Betalingshistorik"
+    },
+    "amortization": {
+      "payment": "Betaling",
+      "principal": "Hovedstol",
+      "interest": "Rente",
+      "balance": "Saldo",
+      "date": "Dato"
+    },
+    "simulator": {
+      "title": "Afbetalingssimulator",
+      "extraPayment": "Ekstra månedlig betaling",
+      "oneTimePayment": "Engangsbetaling",
+      "oneTimeDate": "Engangsbetalingsdato",
+      "results": "Simuleringsresultater",
+      "originalPayoff": "Oprindelig afbetaling",
+      "newPayoff": "Ny afbetaling",
+      "timeSaved": "Tid sparet",
+      "interestSaved": "Renter sparet",
+      "months": "{count} måneder",
+      "years": "{count} år"
+    },
+    "form": {
+      "title": "Lånedetaljer",
+      "name": "Lånenavn",
+      "description": "Beskrivelse",
+      "originalAmount": "Oprindeligt beløb",
+      "currentBalance": "Nuværende saldo",
+      "interestRate": "Rentesats",
+      "interestType": "Rentetype",
+      "fixed": "Fast",
+      "variable": "Variabel",
+      "paymentAmount": "Betalingsbeløb",
+      "paymentFrequency": "Betalingsfrekvens",
+      "startDate": "Startdato",
+      "linkedAccount": "Tilknyttet konto"
+    },
+    "delete": {
+      "confirm": "Er du sikker på, at du vil slette dette lån?",
+      "success": "Lån slettet"
+    },
+    "noLoans": "Ingen lån registreret",
+    "addFirst": "Tilføj dit første lån for at spore afbetalingsfremskridt"
+  },
+  "projects": {
+    "title": "Opsparingsprojekter",
+    "addProject": "Tilføj projekt",
+    "status": {
+      "active": "Aktiv",
+      "paused": "På pause",
+      "completed": "Fuldført",
+      "cancelled": "Annulleret"
+    },
+    "priority": {
+      "high": "Høj prioritet",
+      "medium": "Medium prioritet",
+      "low": "Lav prioritet"
+    },
+    "card": {
+      "current": "Nuværende",
+      "target": "Mål",
+      "monthly": "Månedligt bidrag",
+      "timeline": "Forventet færdiggørelse"
+    },
+    "form": {
+      "title": "Projektdetaljer",
+      "name": "Projektnavn",
+      "description": "Beskrivelse",
+      "targetAmount": "Målbeløb",
+      "currentAmount": "Nuværende beløb",
+      "monthlyContribution": "Månedligt bidrag",
+      "targetDate": "Måldato",
+      "priority": "Prioritet",
+      "status": "Status",
+      "icon": "Ikon",
+      "color": "Farve"
+    },
+    "delete": {
+      "confirm": "Er du sikker på, at du vil slette dette projekt?",
+      "success": "Projekt slettet"
+    },
+    "noProjects": "Ingen opsparingsprojekter",
+    "addFirst": "Opret dit første opsparingsprojekt"
+  },
+  "calendar": {
+    "title": "Finanskalender",
+    "today": "I dag",
+    "month": "Måned",
+    "week": "Uge",
+    "events": {
+      "income": "Indtægt",
+      "expense": "Udgift",
+      "bill": "Regning forfalder",
+      "payment": "Lånebetaling",
+      "inspection": "Bilsyn"
+    },
+    "cashFlow": {
+      "title": "Pengestrømsprognose",
+      "projected": "Forventet saldo",
+      "warning": "Advarsel om lav saldo"
+    },
+    "legend": "Forklaring"
+  },
+  "vehicles": {
+    "title": "Køretøjer",
+    "addVehicle": "Tilføj køretøj",
+    "card": {
+      "year": "Årgang",
+      "mileage": "Kilometerstand",
+      "nextInspection": "Næste syn",
+      "insurance": "Forsikring"
+    },
+    "detail": {
+      "overview": "Oversigt",
+      "maintenance": "Vedligeholdelse",
+      "costs": "Omkostninger",
+      "predictions": "AI-forudsigelser"
+    },
+    "info": {
+      "make": "Mærke",
+      "model": "Model",
+      "year": "Årgang",
+      "variant": "Variant",
+      "licensePlate": "Nummerplade",
+      "vin": "Stelnummer",
+      "purchaseDate": "Købsdato",
+      "purchasePrice": "Købspris",
+      "mileage": "Nuværende kilometerstand",
+      "fuelType": "Brændstoftype"
+    },
+    "fuelTypes": {
+      "petrol": "Benzin",
+      "diesel": "Diesel",
+      "electric": "Elektrisk",
+      "hybrid": "Hybrid",
+      "pluginHybrid": "Plug-in hybrid"
+    },
+    "insurance": {
+      "title": "Forsikring",
+      "provider": "Udbyder",
+      "policyNumber": "Policenummer",
+      "annualCost": "Årlig omkostning",
+      "renewalDate": "Fornyelsesdato"
+    },
+    "inspection": {
+      "title": "Syn",
+      "nextDate": "Næste synsdato",
+      "dueIn": "Forfalder om {days} dage",
+      "overdue": "Forfaldent",
+      "passed": "Godkendt",
+      "failed": "Ikke godkendt"
+    },
+    "maintenance": {
+      "title": "Vedligeholdelseshistorik",
+      "addRecord": "Tilføj vedligeholdelse",
+      "type": "Type",
+      "description": "Beskrivelse",
+      "cost": "Omkostning",
+      "mileage": "Km ved service",
+      "date": "Servicedato",
+      "provider": "Værksted",
+      "nextDue": "Næste forfalden",
+      "types": {
+        "oil": "Olieskift",
+        "tires": "Dæk",
+        "brakes": "Bremser",
+        "service": "Almindelig service",
+        "repair": "Reparation",
+        "inspection": "Syn",
+        "other": "Andet"
+      }
+    },
+    "predictions": {
+      "title": "AI-vedligeholdelsesforudsigelser",
+      "nextService": "Næste anbefalede service",
+      "estimatedCost": "Estimeret omkostning",
+      "confidence": "Sikkerhed",
+      "basedOn": "Baseret på din vedligeholdelseshistorik og køretøjsdata"
+    },
+    "form": {
+      "title": "Køretøjsdetaljer",
+      "nickname": "Kælenavn",
+      "make": "Mærke",
+      "model": "Model",
+      "year": "Årgang",
+      "variant": "Variant",
+      "licensePlate": "Nummerplade",
+      "vin": "Stelnummer (valgfri)",
+      "purchaseDate": "Købsdato",
+      "purchasePrice": "Købspris",
+      "currentMileage": "Nuværende kilometerstand",
+      "fuelType": "Brændstoftype",
+      "linkedLoan": "Tilknyttet lån"
+    },
+    "delete": {
+      "confirm": "Er du sikker på, at du vil slette dette køretøj?",
+      "success": "Køretøj slettet"
+    },
+    "noVehicles": "Ingen køretøjer tilføjet",
+    "addFirst": "Tilføj dit første køretøj for at spore omkostninger og vedligeholdelse"
+  },
+  "upcoming": {
+    "title": "Kommende udgifter",
+    "addExpense": "Tilføj kommende udgift",
+    "filters": {
+      "all": "Alle",
+      "thisMonth": "Denne måned",
+      "next30Days": "Næste 30 dage",
+      "next90Days": "Næste 90 dage"
+    },
+    "certainty": {
+      "certain": "Sikker",
+      "expected": "Forventet",
+      "predicted": "Forudsagt",
+      "planned": "Planlagt",
+      "considering": "Overvejer"
+    },
+    "recurrence": {
+      "once": "Engangs",
+      "weekly": "Ugentlig",
+      "biweekly": "Hver anden uge",
+      "monthly": "Månedlig",
+      "quarterly": "Kvartalsvis",
+      "yearly": "Årlig"
+    },
+    "card": {
+      "dueDate": "Forfaldsdato",
+      "amount": "Beløb",
+      "certainty": "Sikkerhed",
+      "estimate": "Estimat"
+    },
+    "markPaid": "Markér som betalt",
+    "markedPaid": "Markeret som betalt",
+    "form": {
+      "title": "Udgiftsdetaljer",
+      "name": "Navn",
+      "description": "Beskrivelse",
+      "amount": "Beløb",
+      "isEstimate": "Dette er et estimat",
+      "dueDate": "Forfaldsdato",
+      "certainty": "Sikkerhedsniveau",
+      "recurrence": "Gentagelse",
+      "recurrenceInterval": "Gentag hver",
+      "recurrenceEnd": "Slutdato",
+      "category": "Kategori",
+      "linkedVehicle": "Tilknyttet køretøj",
+      "linkedLoan": "Tilknyttet lån"
+    },
+    "delete": {
+      "confirm": "Er du sikker på, at du vil slette denne kommende udgift?",
+      "success": "Udgift slettet"
+    },
+    "noExpenses": "Ingen kommende udgifter",
+    "addFirst": "Tilføj din første kommende udgift for at planlægge fremad"
+  },
+  "settings": {
+    "title": "Indstillinger",
+    "tabs": {
+      "household": "Husstand",
+      "profile": "Profil",
+      "categories": "Kategorier",
+      "rules": "Regler",
+      "accounts": "Konti",
+      "data": "Data og eksport",
+      "security": "Sikkerhed"
+    },
+    "household": {
+      "title": "Husstandsindstillinger",
+      "name": "Husstandsnavn",
+      "members": "Husstandsmedlemmer",
+      "inviteMember": "Inviter medlem",
+      "removeMember": "Fjern medlem",
+      "role": {
+        "admin": "Administrator",
+        "member": "Medlem"
+      }
+    },
+    "profile": {
+      "title": "Profilindstillinger",
+      "displayName": "Visningsnavn",
+      "email": "E-mail",
+      "avatar": "Avatar",
+      "language": "Foretrukket sprog",
+      "changePassword": "Skift adgangskode",
+      "currentPassword": "Nuværende adgangskode",
+      "newPassword": "Ny adgangskode",
+      "confirmNewPassword": "Bekræft ny adgangskode"
+    },
+    "categories": {
+      "title": "Kategorier",
+      "addCategory": "Tilføj kategori",
+      "editCategory": "Rediger kategori",
+      "deleteCategory": "Slet kategori",
+      "name": "Kategorinavn",
+      "nameDa": "Dansk navn",
+      "icon": "Ikon",
+      "color": "Farve",
+      "type": "Type",
+      "parent": "Overordnet kategori",
+      "systemCategory": "Systemkategori (kan ikke slettes)"
+    },
+    "rules": {
+      "title": "Kategoriseringsregler",
+      "addRule": "Tilføj regel",
+      "editRule": "Rediger regel",
+      "deleteRule": "Slet regel",
+      "field": "Matchfelt",
+      "matchType": "Matchtype",
+      "matchValue": "Matchværdi",
+      "category": "Tildel kategori",
+      "priority": "Prioritet",
+      "caseSensitive": "Skelner mellem store/små bogstaver",
+      "fields": {
+        "description": "Beskrivelse",
+        "merchant": "Forretning"
+      },
+      "matchTypes": {
+        "contains": "Indeholder",
+        "startsWith": "Starter med",
+        "endsWith": "Slutter med",
+        "equals": "Er lig med",
+        "regex": "Regex"
+      }
+    },
+    "accounts": {
+      "title": "Bankkonti",
+      "addAccount": "Tilføj konto",
+      "editAccount": "Rediger konto",
+      "deleteAccount": "Slet konto",
+      "name": "Kontonavn",
+      "bankName": "Banknavn",
+      "accountType": "Kontotype",
+      "accountNumber": "Kontonummer (sidste 4 cifre)",
+      "balance": "Nuværende saldo",
+      "owner": "Kontoejer",
+      "types": {
+        "checking": "Lønkonto",
+        "savings": "Opsparingskonto",
+        "credit": "Kreditkort",
+        "investment": "Investering",
+        "loan": "Lån"
+      }
+    },
+    "data": {
+      "title": "Data og eksport",
+      "exportData": "Eksportér alle data",
+      "exportDescription": "Download alle dine finansielle data som en JSON-fil",
+      "exportButton": "Eksportér data",
+      "reauthRequired": "Du skal bekræfte din adgangskode",
+      "deleteData": "Slet alle data",
+      "deleteWarning": "Denne handling kan ikke fortrydes. Alle dine data vil blive permanent slettet.",
+      "deleteButton": "Slet alle data",
+      "auditLog": "Aktivitetslog",
+      "viewAuditLog": "Se aktivitetslog"
+    },
+    "security": {
+      "title": "Sikkerhed",
+      "sessions": "Aktive sessioner",
+      "logoutAll": "Log ud fra alle enheder",
+      "twoFactor": "To-faktor-godkendelse",
+      "enableTwoFactor": "Aktivér 2FA",
+      "disableTwoFactor": "Deaktivér 2FA"
+    },
+    "invite": {
+      "title": "Inviter partner",
+      "email": "Partners e-mail",
+      "send": "Send invitation",
+      "pending": "Afventende invitationer",
+      "expires": "Udløber",
+      "resend": "Send igen",
+      "cancel": "Annuller invitation",
+      "sent": "Invitation sendt!",
+      "maxInvites": "Maksimalt 5 afventende invitationer tilladt"
+    },
+    "saved": "Indstillinger gemt"
+  },
+  "categories": {
+    "income": {
+      "salary": "Løn",
+      "sideIncome": "Biindtægt",
+      "refunds": "Refunderinger",
+      "giftsReceived": "Modtagne gaver",
+      "investmentIncome": "Investeringsafkast"
+    },
+    "housing": {
+      "title": "Bolig",
+      "rentMortgage": "Husleje/Boliglån",
+      "utilities": "Forsyninger",
+      "homeInsurance": "Husforsikring",
+      "homeMaintenance": "Boligvedligeholdelse"
+    },
+    "food": {
+      "title": "Mad og restauranter",
+      "groceries": "Dagligvarer",
+      "takeaway": "Takeaway",
+      "restaurants": "Restauranter",
+      "coffeeSnacks": "Kaffe og snacks"
+    },
+    "transport": {
+      "title": "Transport",
+      "fuel": "Brændstof",
+      "publicTransport": "Offentlig transport",
+      "carMaintenance": "Bilvedligeholdelse",
+      "parking": "Parkering",
+      "carInsurance": "Bilforsikring"
+    },
+    "shopping": {
+      "title": "Shopping",
+      "clothing": "Tøj",
+      "electronics": "Elektronik",
+      "homeGoods": "Boligartikler",
+      "giftsGiven": "Gaver givet"
+    },
+    "entertainment": {
+      "title": "Underholdning",
+      "streaming": "Streaming",
+      "games": "Spil",
+      "eventsActivities": "Begivenheder og aktiviteter",
+      "hobbies": "Hobbyer",
+      "subscriptions": "Abonnementer"
+    },
+    "health": {
+      "title": "Sundhed og velvære",
+      "medical": "Læge",
+      "pharmacy": "Apotek",
+      "fitness": "Fitness"
+    },
+    "family": {
+      "title": "Familie og børn",
+      "childcare": "Børnepasning",
+      "education": "Uddannelse",
+      "kidsActivities": "Børneaktiviteter",
+      "kidsClothing": "Børnetøj"
+    },
+    "financial": {
+      "title": "Finansielt",
+      "loanPayments": "Låneafdrag",
+      "bankFees": "Bankgebyrer",
+      "investments": "Investeringer"
+    },
+    "other": {
+      "title": "Andet",
+      "pets": "Kæledyr",
+      "personalCare": "Personlig pleje",
+      "miscellaneous": "Diverse",
+      "transfer": "Overførsel"
+    }
+  },
+  "errors": {
+    "generic": "Noget gik galt. Prøv venligst igen.",
+    "network": "Netværksfejl. Tjek venligst din forbindelse.",
+    "unauthorized": "Du har ikke tilladelse til at udføre denne handling.",
+    "notFound": "Den ønskede ressource blev ikke fundet.",
+    "validation": "Tjek venligst din indtastning og prøv igen.",
+    "serverError": "Serverfejl. Prøv venligst igen senere.",
+    "sessionExpired": "Din session er udløbet. Log venligst ind igen.",
+    "rateLimited": "For mange forespørgsler. Vent venligst et øjeblik.",
+    "fileTooBig": "Filen er for stor. Maksimal størrelse er {size}.",
+    "invalidFileType": "Ugyldig filtype. Tilladte typer: {types}.",
+    "importFailed": "Import af transaktioner mislykkedes.",
+    "exportFailed": "Eksport af data mislykkedes."
+  },
+  "ai": {
+    "categorize": {
+      "title": "AI-kategorisering",
+      "analyzing": "Analyserer transaktioner...",
+      "suggestion": "AI foreslår: {category}",
+      "confidence": "{percent}% sikkerhed",
+      "accept": "Acceptér",
+      "reject": "Afvis"
+    },
+    "insights": {
+      "title": "AI-indsigter",
+      "generating": "Genererer indsigter...",
+      "spendingPattern": "Forbrugsmønster",
+      "savingOpportunity": "Besparelsesmulighed",
+      "unusualActivity": "Usædvanlig aktivitet",
+      "budgetAlert": "Budgetadvarsel",
+      "milestone": "Milepæl"
+    },
+    "query": {
+      "placeholder": "Spørg om din økonomi...",
+      "examples": "Prøv at spørge: 'Hvor meget brugte jeg på dagligvarer sidste måned?' eller 'Hvad er min gennemsnitlige månedlige indtægt?'",
+      "thinking": "Tænker..."
+    },
+    "scenario": {
+      "title": "Scenarieanalyse",
+      "whatIf": "Hvad hvis...",
+      "analyzing": "Analyserer scenarie..."
+    }
+  },
+  "validation": {
+    "required": "Dette felt er påkrævet",
+    "email": "Indtast venligst en gyldig e-mailadresse",
+    "minLength": "Skal være mindst {min} tegn",
+    "maxLength": "Skal være højst {max} tegn",
+    "positiveNumber": "Skal være et positivt tal",
+    "invalidDate": "Indtast venligst en gyldig dato",
+    "passwordTooWeak": "Adgangskoden er for svag",
+    "passwordMismatch": "Adgangskoderne matcher ikke"
+  }
+}

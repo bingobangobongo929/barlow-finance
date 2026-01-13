@@ -1,0 +1,872 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "export": "Export",
+    "import": "Import",
+    "upload": "Upload",
+    "download": "Download",
+    "view": "View",
+    "hide": "Hide",
+    "showAll": "Show all",
+    "loading": "Loading",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "confirm": "Confirm",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "reset": "Reset",
+    "clear": "Clear",
+    "apply": "Apply",
+    "refresh": "Refresh",
+    "retry": "Retry",
+    "yes": "Yes",
+    "no": "No",
+    "or": "or",
+    "and": "and",
+    "of": "of",
+    "to": "to",
+    "from": "From",
+    "all": "All",
+    "none": "None",
+    "select": "Select",
+    "selected": "selected",
+    "noData": "No data available",
+    "noResults": "No results found",
+    "required": "Required",
+    "optional": "Optional",
+    "currency": "DKK",
+    "currencySymbol": "kr.",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "thisWeek": "This week",
+    "lastWeek": "Last week",
+    "thisMonth": "This month",
+    "lastMonth": "Last month",
+    "thisYear": "This year",
+    "lastYear": "Last year",
+    "custom": "Custom",
+    "actions": "Actions",
+    "details": "Details",
+    "overview": "Overview",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Log out",
+    "login": "Log in",
+    "register": "Register",
+    "welcome": "Welcome",
+    "home": "Home"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "transactions": "Transactions",
+    "budgets": "Budgets",
+    "analytics": "Analytics",
+    "loans": "Loans",
+    "projects": "Projects",
+    "calendar": "Calendar",
+    "vehicles": "Vehicles",
+    "upcoming": "Upcoming Expenses",
+    "settings": "Settings",
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar"
+  },
+  "header": {
+    "appName": "Barlow Finance",
+    "toggleTheme": "Toggle theme",
+    "toggleLanguage": "Toggle language",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode",
+    "userMenu": "User menu",
+    "notifications": "Notifications"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your account",
+      "email": "Email address",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "invalidCredentials": "Invalid email or password",
+      "tooManyAttempts": "Too many login attempts. Please try again in {minutes} minutes.",
+      "sessionExpired": "Your session has expired. Please sign in again."
+    },
+    "register": {
+      "title": "Create your account",
+      "subtitle": "Start managing your household finances",
+      "displayName": "Display name",
+      "email": "Email address",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "householdName": "Household name",
+      "householdNameHint": "e.g., 'The Barlow Family'",
+      "submit": "Create account",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "passwordRequirements": "Password must be at least 8 characters with uppercase, lowercase, number, and special character",
+      "passwordMismatch": "Passwords do not match",
+      "emailInUse": "This email is already registered"
+    },
+    "invite": {
+      "title": "Join household",
+      "subtitle": "You've been invited to join {household}",
+      "accept": "Accept invitation",
+      "decline": "Decline",
+      "expired": "This invitation has expired",
+      "invalid": "Invalid invitation link",
+      "alreadyUsed": "This invitation has already been used",
+      "success": "You've successfully joined the household!"
+    },
+    "logout": {
+      "confirm": "Are you sure you want to log out?",
+      "allDevices": "Log out from all devices",
+      "success": "You have been logged out"
+    },
+    "reauth": {
+      "title": "Confirm your identity",
+      "subtitle": "Please enter your password to continue",
+      "password": "Current password",
+      "submit": "Confirm"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "greeting": "Hello, {name}",
+    "thisMonth": "This Month",
+    "vsLastMonth": "vs last month",
+    "stats": {
+      "income": "Income",
+      "expenses": "Expenses",
+      "netFlow": "Net Cash Flow",
+      "savingsRate": "Savings Rate"
+    },
+    "budgetHealth": {
+      "title": "Budget Health",
+      "onTrack": "On track",
+      "warning": "Caution",
+      "overBudget": "Over budget",
+      "remaining": "{amount} remaining",
+      "overBy": "{amount} over"
+    },
+    "recentTransactions": {
+      "title": "Recent Transactions",
+      "viewAll": "View all transactions",
+      "noTransactions": "No recent transactions"
+    },
+    "upcomingExpenses": {
+      "title": "Upcoming Expenses",
+      "next30Days": "Next 30 days",
+      "viewAll": "View all upcoming",
+      "noUpcoming": "No upcoming expenses",
+      "dueIn": "Due in {days} days",
+      "dueToday": "Due today",
+      "overdue": "Overdue"
+    },
+    "projects": {
+      "title": "Savings Projects",
+      "progress": "{percent}% funded",
+      "viewAll": "View all projects"
+    },
+    "aiInsight": {
+      "title": "AI Insight",
+      "dismiss": "Dismiss",
+      "viewMore": "View more insights"
+    }
+  },
+  "transactions": {
+    "title": "Transactions",
+    "addTransaction": "Add transaction",
+    "importTransactions": "Import transactions",
+    "quickCategorize": "Quick categorize",
+    "filters": {
+      "dateRange": "Date range",
+      "category": "Category",
+      "account": "Account",
+      "type": "Type",
+      "amountRange": "Amount range",
+      "uncategorized": "Uncategorized only",
+      "clearFilters": "Clear filters"
+    },
+    "types": {
+      "all": "All",
+      "income": "Income",
+      "expense": "Expense",
+      "transfer": "Transfer"
+    },
+    "table": {
+      "date": "Date",
+      "description": "Description",
+      "merchant": "Merchant",
+      "category": "Category",
+      "amount": "Amount",
+      "account": "Account",
+      "actions": "Actions"
+    },
+    "form": {
+      "title": "Transaction details",
+      "date": "Date",
+      "description": "Description",
+      "merchant": "Merchant",
+      "amount": "Amount",
+      "type": "Type",
+      "category": "Category",
+      "account": "Account",
+      "notes": "Notes",
+      "tags": "Tags",
+      "isRecurring": "This is a recurring transaction"
+    },
+    "import": {
+      "title": "Import Transactions",
+      "step1": "Upload file",
+      "step2": "Map columns",
+      "step3": "Review & import",
+      "selectFile": "Select CSV file",
+      "dragDrop": "or drag and drop",
+      "supportedFormats": "Supported formats: CSV from Danske Bank, Nordea, Jyske Bank, Sparekassen Kronjylland",
+      "selectBank": "Select your bank",
+      "detectFormat": "Auto-detect format",
+      "columnMapping": "Column mapping",
+      "preview": "Preview",
+      "rowsToImport": "{count} transactions to import",
+      "duplicates": "{count} potential duplicates found",
+      "skipDuplicates": "Skip duplicates",
+      "importing": "Importing transactions...",
+      "success": "Successfully imported {count} transactions",
+      "error": "Error importing transactions"
+    },
+    "categorize": {
+      "title": "Quick Categorize",
+      "uncategorized": "Uncategorized transactions",
+      "selectCategory": "Select category",
+      "createRule": "Create rule for similar transactions",
+      "ruleCreated": "Rule created successfully",
+      "skip": "Skip",
+      "done": "All done!",
+      "remaining": "{count} remaining"
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this transaction?",
+      "success": "Transaction deleted",
+      "bulkConfirm": "Are you sure you want to delete {count} transactions?"
+    },
+    "noTransactions": "No transactions found",
+    "addFirst": "Add your first transaction or import from your bank"
+  },
+  "budgets": {
+    "title": "Budgets",
+    "addBudget": "Add budget",
+    "period": {
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "yearly": "Yearly"
+    },
+    "status": {
+      "onTrack": "On track",
+      "warning": "Warning",
+      "overBudget": "Over budget"
+    },
+    "card": {
+      "spent": "Spent",
+      "budgeted": "Budgeted",
+      "remaining": "Remaining",
+      "overBy": "Over by"
+    },
+    "form": {
+      "title": "Budget details",
+      "name": "Budget name",
+      "category": "Category",
+      "amount": "Budget amount",
+      "period": "Period",
+      "startDate": "Start date",
+      "endDate": "End date",
+      "rollover": "Roll over unused amount",
+      "rolloverHint": "Unused budget will carry over to the next period"
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this budget?",
+      "success": "Budget deleted"
+    },
+    "noBudgets": "No budgets set up",
+    "addFirst": "Create your first budget to start tracking spending"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "tabs": {
+      "overview": "Overview",
+      "categories": "Categories",
+      "trends": "Trends",
+      "comparisons": "Comparisons",
+      "merchants": "Merchants",
+      "personal": "Personal"
+    },
+    "overview": {
+      "incomeVsExpenses": "Income vs Expenses",
+      "netCashFlow": "Net Cash Flow",
+      "savingsRate": "Savings Rate",
+      "topCategories": "Top Spending Categories"
+    },
+    "categories": {
+      "title": "Spending by Category",
+      "breakdown": "Category Breakdown",
+      "trend": "Category Trend"
+    },
+    "trends": {
+      "title": "Spending Trends",
+      "monthlyAverage": "Monthly Average",
+      "yearOverYear": "Year over Year"
+    },
+    "comparisons": {
+      "title": "Period Comparisons",
+      "thisVsLast": "This Month vs Last Month",
+      "vsAverage": "vs Average"
+    },
+    "merchants": {
+      "title": "Top Merchants",
+      "frequency": "Transaction Frequency",
+      "totalSpent": "Total Spent"
+    },
+    "personal": {
+      "title": "Personal Breakdown",
+      "byPerson": "Spending by Person",
+      "sharedExpenses": "Shared Expenses"
+    },
+    "dateRange": "Date range",
+    "compare": "Compare periods"
+  },
+  "loans": {
+    "title": "Loans",
+    "addLoan": "Add loan",
+    "activeLoan": "Active",
+    "paidOff": "Paid off",
+    "summary": {
+      "totalDebt": "Total Debt",
+      "monthlyPayments": "Monthly Payments",
+      "interestThisYear": "Interest This Year",
+      "payoffDate": "Earliest Payoff"
+    },
+    "card": {
+      "balance": "Current Balance",
+      "payment": "Monthly Payment",
+      "rate": "Interest Rate",
+      "payoffDate": "Payoff Date"
+    },
+    "detail": {
+      "overview": "Overview",
+      "amortization": "Amortization Schedule",
+      "payoffSimulator": "Payoff Simulator",
+      "payments": "Payment History"
+    },
+    "amortization": {
+      "payment": "Payment",
+      "principal": "Principal",
+      "interest": "Interest",
+      "balance": "Balance",
+      "date": "Date"
+    },
+    "simulator": {
+      "title": "Payoff Simulator",
+      "extraPayment": "Extra monthly payment",
+      "oneTimePayment": "One-time payment",
+      "oneTimeDate": "One-time payment date",
+      "results": "Simulation Results",
+      "originalPayoff": "Original payoff",
+      "newPayoff": "New payoff",
+      "timeSaved": "Time saved",
+      "interestSaved": "Interest saved",
+      "months": "{count} months",
+      "years": "{count} years"
+    },
+    "form": {
+      "title": "Loan details",
+      "name": "Loan name",
+      "description": "Description",
+      "originalAmount": "Original amount",
+      "currentBalance": "Current balance",
+      "interestRate": "Interest rate",
+      "interestType": "Interest type",
+      "fixed": "Fixed",
+      "variable": "Variable",
+      "paymentAmount": "Payment amount",
+      "paymentFrequency": "Payment frequency",
+      "startDate": "Start date",
+      "linkedAccount": "Linked account"
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this loan?",
+      "success": "Loan deleted"
+    },
+    "noLoans": "No loans tracked",
+    "addFirst": "Add your first loan to track payoff progress"
+  },
+  "projects": {
+    "title": "Savings Projects",
+    "addProject": "Add project",
+    "status": {
+      "active": "Active",
+      "paused": "Paused",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "priority": {
+      "high": "High priority",
+      "medium": "Medium priority",
+      "low": "Low priority"
+    },
+    "card": {
+      "current": "Current",
+      "target": "Target",
+      "monthly": "Monthly contribution",
+      "timeline": "Estimated completion"
+    },
+    "form": {
+      "title": "Project details",
+      "name": "Project name",
+      "description": "Description",
+      "targetAmount": "Target amount",
+      "currentAmount": "Current amount",
+      "monthlyContribution": "Monthly contribution",
+      "targetDate": "Target date",
+      "priority": "Priority",
+      "status": "Status",
+      "icon": "Icon",
+      "color": "Color"
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this project?",
+      "success": "Project deleted"
+    },
+    "noProjects": "No savings projects",
+    "addFirst": "Create your first savings project"
+  },
+  "calendar": {
+    "title": "Financial Calendar",
+    "today": "Today",
+    "month": "Month",
+    "week": "Week",
+    "events": {
+      "income": "Income",
+      "expense": "Expense",
+      "bill": "Bill due",
+      "payment": "Loan payment",
+      "inspection": "Vehicle inspection"
+    },
+    "cashFlow": {
+      "title": "Cash Flow Forecast",
+      "projected": "Projected balance",
+      "warning": "Low balance warning"
+    },
+    "legend": "Legend"
+  },
+  "vehicles": {
+    "title": "Vehicles",
+    "addVehicle": "Add vehicle",
+    "card": {
+      "year": "Year",
+      "mileage": "Mileage",
+      "nextInspection": "Next inspection",
+      "insurance": "Insurance"
+    },
+    "detail": {
+      "overview": "Overview",
+      "maintenance": "Maintenance",
+      "costs": "Costs",
+      "predictions": "AI Predictions"
+    },
+    "info": {
+      "make": "Make",
+      "model": "Model",
+      "year": "Year",
+      "variant": "Variant",
+      "licensePlate": "License plate",
+      "vin": "VIN",
+      "purchaseDate": "Purchase date",
+      "purchasePrice": "Purchase price",
+      "mileage": "Current mileage",
+      "fuelType": "Fuel type"
+    },
+    "fuelTypes": {
+      "petrol": "Petrol",
+      "diesel": "Diesel",
+      "electric": "Electric",
+      "hybrid": "Hybrid",
+      "pluginHybrid": "Plug-in hybrid"
+    },
+    "insurance": {
+      "title": "Insurance",
+      "provider": "Provider",
+      "policyNumber": "Policy number",
+      "annualCost": "Annual cost",
+      "renewalDate": "Renewal date"
+    },
+    "inspection": {
+      "title": "Inspection (Syn)",
+      "nextDate": "Next inspection date",
+      "dueIn": "Due in {days} days",
+      "overdue": "Overdue",
+      "passed": "Passed",
+      "failed": "Failed"
+    },
+    "maintenance": {
+      "title": "Maintenance History",
+      "addRecord": "Add maintenance record",
+      "type": "Type",
+      "description": "Description",
+      "cost": "Cost",
+      "mileage": "Mileage at service",
+      "date": "Service date",
+      "provider": "Service provider",
+      "nextDue": "Next due",
+      "types": {
+        "oil": "Oil change",
+        "tires": "Tires",
+        "brakes": "Brakes",
+        "service": "Regular service",
+        "repair": "Repair",
+        "inspection": "Inspection",
+        "other": "Other"
+      }
+    },
+    "predictions": {
+      "title": "AI Maintenance Predictions",
+      "nextService": "Next recommended service",
+      "estimatedCost": "Estimated cost",
+      "confidence": "Confidence",
+      "basedOn": "Based on your maintenance history and vehicle data"
+    },
+    "form": {
+      "title": "Vehicle details",
+      "nickname": "Nickname",
+      "make": "Make",
+      "model": "Model",
+      "year": "Year",
+      "variant": "Variant",
+      "licensePlate": "License plate",
+      "vin": "VIN (optional)",
+      "purchaseDate": "Purchase date",
+      "purchasePrice": "Purchase price",
+      "currentMileage": "Current mileage",
+      "fuelType": "Fuel type",
+      "linkedLoan": "Linked loan"
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this vehicle?",
+      "success": "Vehicle deleted"
+    },
+    "noVehicles": "No vehicles added",
+    "addFirst": "Add your first vehicle to track costs and maintenance"
+  },
+  "upcoming": {
+    "title": "Upcoming Expenses",
+    "addExpense": "Add upcoming expense",
+    "filters": {
+      "all": "All",
+      "thisMonth": "This month",
+      "next30Days": "Next 30 days",
+      "next90Days": "Next 90 days"
+    },
+    "certainty": {
+      "certain": "Certain",
+      "expected": "Expected",
+      "predicted": "Predicted",
+      "planned": "Planned",
+      "considering": "Considering"
+    },
+    "recurrence": {
+      "once": "One-time",
+      "weekly": "Weekly",
+      "biweekly": "Bi-weekly",
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "yearly": "Yearly"
+    },
+    "card": {
+      "dueDate": "Due date",
+      "amount": "Amount",
+      "certainty": "Certainty",
+      "estimate": "Estimate"
+    },
+    "markPaid": "Mark as paid",
+    "markedPaid": "Marked as paid",
+    "form": {
+      "title": "Expense details",
+      "name": "Name",
+      "description": "Description",
+      "amount": "Amount",
+      "isEstimate": "This is an estimate",
+      "dueDate": "Due date",
+      "certainty": "Certainty level",
+      "recurrence": "Recurrence",
+      "recurrenceInterval": "Repeat every",
+      "recurrenceEnd": "End date",
+      "category": "Category",
+      "linkedVehicle": "Linked vehicle",
+      "linkedLoan": "Linked loan"
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this upcoming expense?",
+      "success": "Expense deleted"
+    },
+    "noExpenses": "No upcoming expenses",
+    "addFirst": "Add your first upcoming expense to plan ahead"
+  },
+  "settings": {
+    "title": "Settings",
+    "tabs": {
+      "household": "Household",
+      "profile": "Profile",
+      "categories": "Categories",
+      "rules": "Rules",
+      "accounts": "Accounts",
+      "data": "Data & Export",
+      "security": "Security"
+    },
+    "household": {
+      "title": "Household Settings",
+      "name": "Household name",
+      "members": "Household members",
+      "inviteMember": "Invite member",
+      "removeMember": "Remove member",
+      "role": {
+        "admin": "Admin",
+        "member": "Member"
+      }
+    },
+    "profile": {
+      "title": "Profile Settings",
+      "displayName": "Display name",
+      "email": "Email",
+      "avatar": "Avatar",
+      "language": "Preferred language",
+      "changePassword": "Change password",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmNewPassword": "Confirm new password"
+    },
+    "categories": {
+      "title": "Categories",
+      "addCategory": "Add category",
+      "editCategory": "Edit category",
+      "deleteCategory": "Delete category",
+      "name": "Category name",
+      "nameDa": "Danish name",
+      "icon": "Icon",
+      "color": "Color",
+      "type": "Type",
+      "parent": "Parent category",
+      "systemCategory": "System category (cannot be deleted)"
+    },
+    "rules": {
+      "title": "Categorization Rules",
+      "addRule": "Add rule",
+      "editRule": "Edit rule",
+      "deleteRule": "Delete rule",
+      "field": "Match field",
+      "matchType": "Match type",
+      "matchValue": "Match value",
+      "category": "Assign category",
+      "priority": "Priority",
+      "caseSensitive": "Case sensitive",
+      "fields": {
+        "description": "Description",
+        "merchant": "Merchant"
+      },
+      "matchTypes": {
+        "contains": "Contains",
+        "startsWith": "Starts with",
+        "endsWith": "Ends with",
+        "equals": "Equals",
+        "regex": "Regex"
+      }
+    },
+    "accounts": {
+      "title": "Bank Accounts",
+      "addAccount": "Add account",
+      "editAccount": "Edit account",
+      "deleteAccount": "Delete account",
+      "name": "Account name",
+      "bankName": "Bank name",
+      "accountType": "Account type",
+      "accountNumber": "Account number (last 4 digits)",
+      "balance": "Current balance",
+      "owner": "Account owner",
+      "types": {
+        "checking": "Checking",
+        "savings": "Savings",
+        "credit": "Credit card",
+        "investment": "Investment",
+        "loan": "Loan"
+      }
+    },
+    "data": {
+      "title": "Data & Export",
+      "exportData": "Export all data",
+      "exportDescription": "Download all your financial data as a JSON file",
+      "exportButton": "Export data",
+      "reauthRequired": "You'll need to confirm your password",
+      "deleteData": "Delete all data",
+      "deleteWarning": "This action cannot be undone. All your data will be permanently deleted.",
+      "deleteButton": "Delete all data",
+      "auditLog": "Audit Log",
+      "viewAuditLog": "View activity log"
+    },
+    "security": {
+      "title": "Security",
+      "sessions": "Active sessions",
+      "logoutAll": "Log out from all devices",
+      "twoFactor": "Two-factor authentication",
+      "enableTwoFactor": "Enable 2FA",
+      "disableTwoFactor": "Disable 2FA"
+    },
+    "invite": {
+      "title": "Invite Partner",
+      "email": "Partner's email",
+      "send": "Send invitation",
+      "pending": "Pending invitations",
+      "expires": "Expires",
+      "resend": "Resend",
+      "cancel": "Cancel invitation",
+      "sent": "Invitation sent!",
+      "maxInvites": "Maximum 5 pending invitations allowed"
+    },
+    "saved": "Settings saved"
+  },
+  "categories": {
+    "income": {
+      "salary": "Salary",
+      "sideIncome": "Side Income",
+      "refunds": "Refunds",
+      "giftsReceived": "Gifts Received",
+      "investmentIncome": "Investment Income"
+    },
+    "housing": {
+      "title": "Housing",
+      "rentMortgage": "Rent/Mortgage",
+      "utilities": "Utilities",
+      "homeInsurance": "Home Insurance",
+      "homeMaintenance": "Home Maintenance"
+    },
+    "food": {
+      "title": "Food & Dining",
+      "groceries": "Groceries",
+      "takeaway": "Takeaway",
+      "restaurants": "Restaurants",
+      "coffeeSnacks": "Coffee & Snacks"
+    },
+    "transport": {
+      "title": "Transportation",
+      "fuel": "Fuel",
+      "publicTransport": "Public Transport",
+      "carMaintenance": "Car Maintenance",
+      "parking": "Parking",
+      "carInsurance": "Car Insurance"
+    },
+    "shopping": {
+      "title": "Shopping",
+      "clothing": "Clothing",
+      "electronics": "Electronics",
+      "homeGoods": "Home Goods",
+      "giftsGiven": "Gifts Given"
+    },
+    "entertainment": {
+      "title": "Entertainment",
+      "streaming": "Streaming",
+      "games": "Games",
+      "eventsActivities": "Events & Activities",
+      "hobbies": "Hobbies",
+      "subscriptions": "Subscriptions"
+    },
+    "health": {
+      "title": "Health & Wellness",
+      "medical": "Medical",
+      "pharmacy": "Pharmacy",
+      "fitness": "Fitness"
+    },
+    "family": {
+      "title": "Family & Children",
+      "childcare": "Childcare",
+      "education": "Education",
+      "kidsActivities": "Kids Activities",
+      "kidsClothing": "Kids Clothing"
+    },
+    "financial": {
+      "title": "Financial",
+      "loanPayments": "Loan Payments",
+      "bankFees": "Bank Fees",
+      "investments": "Investments"
+    },
+    "other": {
+      "title": "Other",
+      "pets": "Pets",
+      "personalCare": "Personal Care",
+      "miscellaneous": "Miscellaneous",
+      "transfer": "Transfer"
+    }
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Network error. Please check your connection.",
+    "unauthorized": "You are not authorized to perform this action.",
+    "notFound": "The requested resource was not found.",
+    "validation": "Please check your input and try again.",
+    "serverError": "Server error. Please try again later.",
+    "sessionExpired": "Your session has expired. Please log in again.",
+    "rateLimited": "Too many requests. Please wait a moment.",
+    "fileTooBig": "File is too large. Maximum size is {size}.",
+    "invalidFileType": "Invalid file type. Allowed types: {types}.",
+    "importFailed": "Failed to import transactions.",
+    "exportFailed": "Failed to export data."
+  },
+  "ai": {
+    "categorize": {
+      "title": "AI Categorization",
+      "analyzing": "Analyzing transactions...",
+      "suggestion": "AI suggests: {category}",
+      "confidence": "{percent}% confidence",
+      "accept": "Accept",
+      "reject": "Reject"
+    },
+    "insights": {
+      "title": "AI Insights",
+      "generating": "Generating insights...",
+      "spendingPattern": "Spending Pattern",
+      "savingOpportunity": "Saving Opportunity",
+      "unusualActivity": "Unusual Activity",
+      "budgetAlert": "Budget Alert",
+      "milestone": "Milestone"
+    },
+    "query": {
+      "placeholder": "Ask about your finances...",
+      "examples": "Try asking: 'How much did I spend on groceries last month?' or 'What's my average monthly income?'",
+      "thinking": "Thinking..."
+    },
+    "scenario": {
+      "title": "Scenario Analysis",
+      "whatIf": "What if...",
+      "analyzing": "Analyzing scenario..."
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be at most {max} characters",
+    "positiveNumber": "Must be a positive number",
+    "invalidDate": "Please enter a valid date",
+    "passwordTooWeak": "Password is too weak",
+    "passwordMismatch": "Passwords do not match"
+  }
+}

@@ -20,7 +20,7 @@ This is a FINANCE APP. Security is mandatory:
 Household finance management for a Danish family (Ed and wife). Full transparency between spouses. DKK currency only. Bilingual: English and Danish with toggle.
 
 ## Tech Stack
-- Next.js 15 (App Router)
+- Next.js 16 (App Router)
 - TypeScript (strict)
 - Tailwind CSS 4
 - Supabase (Auth + PostgreSQL)
@@ -132,8 +132,7 @@ barlow-finance/
 │   │   │   ├── (auth)/
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── login/page.tsx
-│   │   │   │   ├── register/page.tsx
-│   │   │   │   └── invite/[token]/page.tsx
+│   │   │   │   └── register/page.tsx
 │   │   │   └── (dashboard)/
 │   │   │       ├── layout.tsx
 │   │   │       ├── dashboard/page.tsx
@@ -153,24 +152,22 @@ barlow-finance/
 │   │   │       │   └── [id]/page.tsx
 │   │   │       ├── upcoming/page.tsx
 │   │   │       └── settings/page.tsx
+│   │   ├── auth/
+│   │   │   └── callback/route.ts
 │   │   ├── api/
-│   │   │   ├── auth/callback/route.ts
 │   │   │   ├── transactions/
 │   │   │   │   ├── route.ts
 │   │   │   │   └── import/route.ts
 │   │   │   └── ai/
-│   │   │       ├── categorize/route.ts
-│   │   │       ├── insights/route.ts
-│   │   │       ├── query/route.ts
-│   │   │       ├── maintenance/route.ts
-│   │   │       └── scenario/route.ts
+│   │   │       ├── categorize/
+│   │   │       │   ├── route.ts
+│   │   │       │   └── bulk/route.ts
+│   │   │       └── insights/route.ts
 │   │   ├── globals.css
 │   │   └── layout.tsx
 │   ├── components/
 │   │   ├── ui/
 │   │   ├── layout/
-│   │   ├── charts/
-│   │   ├── features/
 │   │   └── providers/
 │   ├── lib/
 │   │   ├── supabase/
@@ -181,7 +178,9 @@ barlow-finance/
 │   │   ├── hooks/
 │   │   ├── types/
 │   │   ├── constants/
-│   │   └── security/
+│   │   ├── security/
+│   │   ├── brand-logos.tsx
+│   │   └── merchant-icons.tsx
 │   ├── i18n/
 │   │   ├── config.ts
 │   │   ├── request.ts

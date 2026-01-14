@@ -9,9 +9,6 @@ export const metadata: Metadata = {
   description: "Barlow Farmhouse Finance - Household financial command center",
   keywords: ["finance", "household", "budget", "expenses", "Danish", "DKK"],
   authors: [{ name: "Barlow Family" }],
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({

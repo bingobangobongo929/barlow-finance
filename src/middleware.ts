@@ -9,7 +9,7 @@ const intlMiddleware = createMiddleware(routing);
 const publicRoutes = ["/login", "/register", "/invite"];
 
 // Routes that are completely public (no locale prefix handling needed)
-const staticRoutes = ["/api", "/_next", "/favicon.ico"];
+const staticRoutes = ["/api", "/_next", "/favicon.ico", "/icon", "/apple-icon"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -82,6 +82,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|icon|apple-icon|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

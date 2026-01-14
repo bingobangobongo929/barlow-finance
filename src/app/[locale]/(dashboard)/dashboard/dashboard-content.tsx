@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { formatCurrency, formatDate, formatPercentage, cn } from "@/lib/utils";
-import { getMerchantInfo } from "@/lib/merchant-icons";
+import { TransactionIcon } from "@/lib/merchant-icons";
 import type { Profile, Transaction, UpcomingExpense, Budget, Project, AIInsight } from "@/lib/types";
 
 interface DashboardContentProps {
@@ -193,51 +193,50 @@ export function DashboardContent({
             </CardHeader>
             <CardContent>
               {recentTransactions.length > 0 ? (
-                <div className="space-y-3">
-                  {recentTransactions.map((transaction) => {
-                    const merchant = getMerchantInfo(transaction.description);
-                    return (
+                <div className="space-y-1">
+                  {recentTransactions.map((transaction) => (
                     <div
                       key={transaction.id}
-                      className="flex items-center justify-between rounded-lg p-2 hover:bg-[var(--bg-hover)]"
+                      className={cn(
+                        "flex items-center justify-between rounded-lg p-2.5 transition-colors",
+                        "hover:bg-[var(--bg-hover)]",
+                        transaction.type === "income" && "bg-[var(--income)]/[0.03]"
+                      )}
                     >
                       <div className="flex items-center gap-3">
-                        <div
-                          className="flex h-9 w-9 items-center justify-center rounded-lg text-lg"
-                          style={{
-                            backgroundColor: merchant.matched
-                              ? `${merchant.color}15`
-                              : transaction.category?.color
-                              ? `${transaction.category.color}20`
-                              : "var(--bg-tertiary)",
-                          }}
-                        >
-                          {merchant.matched ? (
-                            merchant.icon
-                          ) : transaction.type === "income" ? (
-                            <TrendingUp className="h-4 w-4 text-[var(--income)]" />
-                          ) : transaction.type === "expense" ? (
-                            <TrendingDown className="h-4 w-4 text-[var(--expense)]" />
-                          ) : (
-                            <ArrowRight className="h-4 w-4 text-[var(--transfer)]" />
-                          )}
-                        </div>
+                        <TransactionIcon
+                          description={transaction.description}
+                          fallbackColor={transaction.category?.color}
+                        />
                         <div>
                           <p className="text-sm font-medium text-[var(--text-primary)]">
                             {transaction.description}
                           </p>
-                          <p className="text-xs text-[var(--text-secondary)]">
-                            {locale === "da"
-                              ? transaction.category?.name_da
-                              : transaction.category?.name}
-                            {" · "}
-                            {formatDate(transaction.transaction_date, "d. MMM", locale)}
-                          </p>
+                          <div className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+                            {transaction.category && (
+                              <span
+                                className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5"
+                                style={{
+                                  backgroundColor: `${transaction.category.color}15`,
+                                  color: transaction.category.color,
+                                }}
+                              >
+                                <span>{transaction.category.icon}</span>
+                                <span>
+                                  {locale === "da"
+                                    ? transaction.category.name_da
+                                    : transaction.category.name}
+                                </span>
+                              </span>
+                            )}
+                            <span className="text-[var(--text-tertiary)]">·</span>
+                            <span>{formatDate(transaction.transaction_date, "d. MMM", locale)}</span>
+                          </div>
                         </div>
                       </div>
                       <span
                         className={cn(
-                          "font-mono text-sm font-medium",
+                          "font-mono text-sm font-semibold",
                           transaction.type === "income"
                             ? "text-[var(--income)]"
                             : transaction.type === "expense"
@@ -245,12 +244,11 @@ export function DashboardContent({
                             : "text-[var(--transfer)]"
                         )}
                       >
-                        {transaction.type === "income" ? "+" : "-"}
+                        {transaction.type === "income" ? "+" : ""}
                         {formatCurrency(transaction.amount, locale)}
                       </span>
                     </div>
-                  );
-                  })}
+                  ))}
                 </div>
               ) : (
                 <div className="py-8 text-center text-sm text-[var(--text-secondary)]">

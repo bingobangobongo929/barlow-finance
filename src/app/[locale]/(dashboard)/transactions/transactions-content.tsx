@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
-import { format, parseISO } from "date-fns";
+import { format, parseISO, isToday, isYesterday } from "date-fns";
 import { da, enUS } from "date-fns/locale";
 import {
   Plus,
@@ -34,7 +34,7 @@ import { Dropdown, DropdownItem } from "@/components/ui/dropdown";
 import { DatePicker } from "@/components/ui/date-picker";
 import { useErrorToast, useSuccessToast } from "@/components/ui/toast";
 import { formatCurrency, formatDate } from "@/lib/utils";
-import { getMerchantInfo } from "@/lib/merchant-icons";
+import { TransactionIcon } from "@/lib/merchant-icons";
 import type { Transaction, Category, Account } from "@/lib/types";
 
 interface TransactionsContentProps {
@@ -144,6 +144,45 @@ export function TransactionsContent({
     if (!category) return t("uncategorized");
     return locale === "da" ? category.name_da : category.name;
   };
+
+  // Format date for group headers
+  const formatDateHeader = (dateStr: string) => {
+    const date = parseISO(dateStr);
+    const dateLocale = locale === "da" ? da : enUS;
+
+    if (isToday(date)) {
+      return locale === "da" ? "I dag" : "Today";
+    }
+    if (isYesterday(date)) {
+      return locale === "da" ? "I går" : "Yesterday";
+    }
+    return format(date, "EEEE, d. MMMM", { locale: dateLocale });
+  };
+
+  // Group transactions by date
+  const groupedTransactions = React.useMemo(() => {
+    const groups: { date: string; transactions: typeof transactions }[] = [];
+    let currentDate = "";
+    let currentGroup: typeof transactions = [];
+
+    transactions.forEach((t) => {
+      if (t.transaction_date !== currentDate) {
+        if (currentGroup.length > 0) {
+          groups.push({ date: currentDate, transactions: currentGroup });
+        }
+        currentDate = t.transaction_date;
+        currentGroup = [t];
+      } else {
+        currentGroup.push(t);
+      }
+    });
+
+    if (currentGroup.length > 0) {
+      groups.push({ date: currentDate, transactions: currentGroup });
+    }
+
+    return groups;
+  }, [transactions]);
 
   const resetForm = () => {
     setFormData({
@@ -514,15 +553,6 @@ export function TransactionsContent({
           <table className="w-full">
             <thead className="border-b border-[var(--border-primary)] bg-[var(--bg-secondary)]">
               <tr>
-                <th className="px-4 py-3 text-left">
-                  <button
-                    onClick={() => handleSort("transaction_date")}
-                    className="flex items-center gap-1 text-xs font-medium uppercase text-[var(--text-secondary)]"
-                  >
-                    {t("date")}
-                    <ArrowUpDown className="h-3 w-3" />
-                  </button>
-                </th>
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase text-[var(--text-secondary)]">
                   {t("description")}
                 </th>
@@ -541,15 +571,13 @@ export function TransactionsContent({
                     <ArrowUpDown className="h-3 w-3" />
                   </button>
                 </th>
-                <th className="px-4 py-3 text-right text-xs font-medium uppercase text-[var(--text-secondary)]">
-                  {tCommon("actions")}
-                </th>
+                <th className="w-12 px-4 py-3"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--border-primary)]">
+            <tbody>
               {transactions.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-4 py-12 text-center">
+                  <td colSpan={5} className="px-4 py-12 text-center">
                     <p className="text-[var(--text-secondary)]">{t("noTransactions")}</p>
                     <Button
                       variant="secondary"
@@ -562,99 +590,110 @@ export function TransactionsContent({
                   </td>
                 </tr>
               ) : (
-                transactions.map((transaction) => (
-                  <tr
-                    key={transaction.id}
-                    className="hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <td className="px-4 py-3 text-sm text-[var(--text-primary)]">
-                      {formatDate(transaction.transaction_date, locale)}
-                    </td>
-                    <td className="px-4 py-3">
-                      <div className="flex items-center gap-3">
-                        {(() => {
-                          const merchant = getMerchantInfo(transaction.description);
-                          if (merchant.matched) {
-                            return (
-                              <div
-                                className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-lg"
-                                style={{ backgroundColor: `${merchant.color}15` }}
-                              >
-                                {merchant.icon}
+                groupedTransactions.map((group) => (
+                  <React.Fragment key={group.date}>
+                    {/* Date Header Row */}
+                    <tr className="sticky top-0 z-10">
+                      <td
+                        colSpan={5}
+                        className="bg-[var(--bg-tertiary)] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-[var(--text-secondary)]"
+                      >
+                        {formatDateHeader(group.date)}
+                      </td>
+                    </tr>
+                    {/* Transaction Rows */}
+                    {group.transactions.map((transaction) => (
+                      <tr
+                        key={transaction.id}
+                        className={`
+                          border-b border-[var(--border-primary)] transition-colors
+                          hover:bg-[var(--bg-secondary)]
+                          ${transaction.type === "income" ? "bg-[var(--income)]/[0.04]" : ""}
+                          ${transaction.type === "transfer" ? "bg-[var(--transfer)]/[0.04]" : ""}
+                        `}
+                      >
+                        <td className="px-4 py-3">
+                          <div className="flex items-center gap-3">
+                            <TransactionIcon
+                              description={transaction.description}
+                              fallbackColor={transaction.category?.color}
+                            />
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className="truncate text-sm font-medium text-[var(--text-primary)]">
+                                  {transaction.description}
+                                </span>
+                                {transaction.is_recurring && (
+                                  <Badge variant="default" className="flex-shrink-0 text-xs">
+                                    {t("recurring")}
+                                  </Badge>
+                                )}
                               </div>
-                            );
-                          }
-                          return null;
-                        })()}
-                        <div>
-                          <div className="flex items-center gap-2">
-                            {transaction.is_recurring && (
-                              <Badge variant="default" className="text-xs">
-                                {t("recurring")}
-                              </Badge>
-                            )}
-                            <span className="text-sm font-medium text-[var(--text-primary)]">
-                              {transaction.description}
-                            </span>
+                              {transaction.notes && (
+                                <p className="mt-0.5 truncate text-xs text-[var(--text-muted)]">
+                                  {transaction.notes}
+                                </p>
+                              )}
+                            </div>
                           </div>
-                          {transaction.notes && (
-                            <p className="mt-1 text-xs text-[var(--text-muted)] line-clamp-1">
-                              {transaction.notes}
-                            </p>
+                        </td>
+                        <td className="px-4 py-3">
+                          {transaction.category ? (
+                            <div
+                              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium"
+                              style={{
+                                backgroundColor: `${transaction.category.color}20`,
+                                color: transaction.category.color,
+                              }}
+                            >
+                              <span>{transaction.category.icon}</span>
+                              <span>{getCategoryName(transaction.category)}</span>
+                            </div>
+                          ) : (
+                            <span className="text-sm text-[var(--text-muted)]">
+                              {t("uncategorized")}
+                            </span>
                           )}
-                        </div>
-                      </div>
-                    </td>
-                    <td className="px-4 py-3">
-                      {transaction.category ? (
-                        <div className="flex items-center gap-2">
-                          <span className="text-lg">{transaction.category.icon}</span>
-                          <span className="text-sm text-[var(--text-secondary)]">
-                            {getCategoryName(transaction.category)}
+                        </td>
+                        <td className="px-4 py-3 text-sm text-[var(--text-secondary)]">
+                          {transaction.account?.name || "-"}
+                        </td>
+                        <td className="px-4 py-3 text-right">
+                          <span
+                            className={`font-mono text-base font-semibold ${
+                              Number(transaction.amount) >= 0
+                                ? "text-[var(--income)]"
+                                : "text-[var(--expense)]"
+                            }`}
+                          >
+                            {Number(transaction.amount) >= 0 ? "+" : ""}
+                            {formatCurrency(Number(transaction.amount), "DKK", locale)}
                           </span>
-                        </div>
-                      ) : (
-                        <span className="text-sm text-[var(--text-muted)]">
-                          {t("uncategorized")}
-                        </span>
-                      )}
-                    </td>
-                    <td className="px-4 py-3 text-sm text-[var(--text-secondary)]">
-                      {transaction.account?.name || "-"}
-                    </td>
-                    <td className="px-4 py-3 text-right">
-                      <span
-                        className={`text-sm font-semibold ${
-                          Number(transaction.amount) >= 0
-                            ? "text-[var(--accent-success)]"
-                            : "text-[var(--accent-danger)]"
-                        }`}
-                      >
-                        {formatCurrency(Number(transaction.amount), "DKK", locale)}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 text-right">
-                      <Dropdown
-                        trigger={
-                          <Button variant="ghost" size="sm">
-                            <MoreHorizontal className="h-4 w-4" />
-                          </Button>
-                        }
-                      >
-                        <DropdownItem onClick={() => openEditModal(transaction)}>
-                          <Pencil className="mr-2 h-4 w-4" />
-                          {tCommon("edit")}
-                        </DropdownItem>
-                        <DropdownItem
-                          onClick={() => openDeleteModal(transaction)}
-                          className="text-[var(--accent-danger)]"
-                        >
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          {tCommon("delete")}
-                        </DropdownItem>
-                      </Dropdown>
-                    </td>
-                  </tr>
+                        </td>
+                        <td className="px-4 py-3 text-right">
+                          <Dropdown
+                            trigger={
+                              <Button variant="ghost" size="sm">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            }
+                          >
+                            <DropdownItem onClick={() => openEditModal(transaction)}>
+                              <Pencil className="mr-2 h-4 w-4" />
+                              {tCommon("edit")}
+                            </DropdownItem>
+                            <DropdownItem
+                              onClick={() => openDeleteModal(transaction)}
+                              className="text-[var(--accent-danger)]"
+                            >
+                              <Trash2 className="mr-2 h-4 w-4" />
+                              {tCommon("delete")}
+                            </DropdownItem>
+                          </Dropdown>
+                        </td>
+                      </tr>
+                    ))}
+                  </React.Fragment>
                 ))
               )}
             </tbody>

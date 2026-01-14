@@ -36,14 +36,30 @@ export async function POST(request: Request) {
       );
     }
 
-    const { description, amount, type, householdId } = await request.json();
+    const { description, amount, type } = await request.json();
 
-    if (!description || !householdId) {
+    if (!description) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
     }
+
+    // Get user's household - SECURITY: Don't trust client-provided householdId
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("household_id")
+      .eq("id", user.id)
+      .single();
+
+    if (!profile?.household_id) {
+      return NextResponse.json(
+        { error: "User not associated with a household" },
+        { status: 403 }
+      );
+    }
+
+    const householdId = profile.household_id;
 
     // Get available categories
     const { data: categories } = await supabase
@@ -82,6 +98,7 @@ export async function POST(request: Request) {
     }
 
     // Use Claude for categorization
+    // PRIVACY: Only send category names and transaction type, not amounts
     const categoryList = categories
       .map((c) => `- ${c.id}: ${c.name}`)
       .join("\n");
@@ -92,10 +109,8 @@ export async function POST(request: Request) {
       messages: [
         {
           role: "user",
-          content: `Categorize this transaction:
-Description: ${description}
-Amount: ${amount} DKK
-Type: ${type}
+          content: `Categorize this ${type} transaction based on the description:
+"${description}"
 
 Available categories:
 ${categoryList}
@@ -130,7 +145,7 @@ CONFIDENCE: 0`,
       source: "ai",
     });
   } catch (error) {
-    console.error("AI categorization error:", error);
+    console.error("AI categorization error:", error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json(
       { error: "Failed to categorize transaction" },
       { status: 500 }

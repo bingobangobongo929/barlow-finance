@@ -168,7 +168,7 @@ export function LoansContent({
       resetForm();
       router.refresh();
     } catch (error) {
-      console.error("Loan error:", error);
+      console.error("Loan error:", error instanceof Error ? error.message : "Unknown error");
       showError(isEdit ? t("updateError") : t("addError"));
     } finally {
       setIsSubmitting(false);
@@ -199,7 +199,7 @@ export function LoansContent({
       setSelectedLoan(null);
       router.refresh();
     } catch (error) {
-      console.error("Delete error:", error);
+      console.error("Delete error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("deleteError"));
     } finally {
       setIsSubmitting(false);

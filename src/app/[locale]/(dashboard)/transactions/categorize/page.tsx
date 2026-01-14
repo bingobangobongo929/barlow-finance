@@ -153,7 +153,7 @@ export default function QuickCategorizePage() {
       setCategorizedCount((prev) => prev + 1);
       moveToNext();
     } catch (error) {
-      console.error("Categorize error:", error);
+      console.error("Categorize error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("categorizeError"));
     } finally {
       setIsSaving(false);
@@ -201,7 +201,7 @@ export default function QuickCategorizePage() {
         showError(t("aiUncertain"));
       }
     } catch (error) {
-      console.error("AI categorize error:", error);
+      console.error("AI categorize error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("aiError"));
     } finally {
       setIsAiCategorizing(false);
@@ -253,7 +253,7 @@ export default function QuickCategorizePage() {
       showSuccess(t("bulkAiCategorized", { count: successCount }));
       router.push("/transactions");
     } catch (error) {
-      console.error("Bulk AI categorize error:", error);
+      console.error("Bulk AI categorize error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("aiError"));
     } finally {
       setIsAiCategorizing(false);

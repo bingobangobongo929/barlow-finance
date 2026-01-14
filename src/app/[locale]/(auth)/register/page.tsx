@@ -98,7 +98,7 @@ export default function RegisterPage() {
         .single();
 
       if (householdError) {
-        console.error("Household creation error:", householdError);
+        console.error("Household creation error:", householdError.message);
         showError("Failed to create household");
         return;
       }
@@ -114,7 +114,7 @@ export default function RegisterPage() {
       });
 
       if (profileError) {
-        console.error("Profile creation error:", profileError);
+        console.error("Profile creation error:", profileError.message);
         showError("Failed to create profile");
         return;
       }
@@ -123,7 +123,7 @@ export default function RegisterPage() {
       router.push("/dashboard");
       router.refresh();
     } catch (error) {
-      console.error("Registration error:", error);
+      console.error("Registration error:", error instanceof Error ? error.message : "Unknown error");
       showError("An error occurred during registration");
     } finally {
       setIsLoading(false);

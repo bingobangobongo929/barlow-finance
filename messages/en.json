@@ -77,6 +77,7 @@
     "calendar": "Calendar",
     "vehicles": "Vehicles",
     "upcoming": "Upcoming Expenses",
+    "advisor": "Financial Advisor",
     "settings": "Settings",
     "collapse": "Collapse sidebar",
     "expand": "Expand sidebar"
@@ -1195,6 +1196,35 @@
       "whatIf": "What if...",
       "analyzing": "Analyzing scenario..."
     }
+  },
+  "advisor": {
+    "title": "Financial Advisor",
+    "subtitle": "Upload your bank statements and get personalized insights",
+    "uploadFiles": "Upload Files",
+    "dropHere": "Drop CSV files here or click to browse",
+    "uploadedFiles": "Uploaded Files",
+    "transactions": "transactions",
+    "transactionsLoaded": "transactions loaded",
+    "summary": "Summary",
+    "totalIncome": "Total Income",
+    "totalExpenses": "Total Expenses",
+    "netCashFlow": "Net Cash Flow",
+    "chatTitle": "AI Financial Advisor",
+    "uploadToStart": "Upload bank statements to start chatting",
+    "readyToChat": "Ready to analyze your finances! Ask me anything.",
+    "placeholder": "Ask about your finances...",
+    "analyzing": "Analyzing your data...",
+    "clearAll": "Clear All",
+    "privacyNote": "Your data is sent to AI for analysis. It is not stored permanently.",
+    "unknownFormat": "Could not detect bank format",
+    "noTransactions": "No transactions found in file",
+    "parseError": "Failed to parse file",
+    "uploadFirst": "Please upload files first",
+    "sendError": "Failed to send message",
+    "suggestedQ1": "What are my biggest expenses?",
+    "suggestedQ2": "How is my spending vs income?",
+    "suggestedQ3": "Where can I save money?",
+    "suggestedQ4": "Any concerning patterns?"
   },
   "validation": {
     "required": "This field is required",

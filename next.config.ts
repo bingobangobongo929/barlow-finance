@@ -36,10 +36,12 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+      // Note: Next.js requires 'unsafe-inline' for its hydration scripts in production
+      // 'unsafe-eval' removed - only needed in development mode
+      "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: https: blob: https://logo.clearbit.com",
+      "img-src 'self' data: blob:",
       "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.anthropic.com",
       "frame-ancestors 'self'",
       "form-action 'self'",
@@ -62,10 +64,6 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "*.supabase.co",
-      },
-      {
-        protocol: "https",
-        hostname: "logo.clearbit.com",
       },
     ],
   },

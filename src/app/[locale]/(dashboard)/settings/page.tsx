@@ -147,7 +147,7 @@ export default function SettingsPage() {
       showSuccess(t("profileSaved"));
       router.refresh();
     } catch (error) {
-      console.error("Save profile error:", error);
+      console.error("Save profile error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("saveError"));
     } finally {
       setIsSaving(false);
@@ -170,7 +170,7 @@ export default function SettingsPage() {
       if (error) throw error;
       showSuccess(t("householdSaved"));
     } catch (error) {
-      console.error("Save household error:", error);
+      console.error("Save household error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("saveError"));
     } finally {
       setIsSaving(false);
@@ -199,7 +199,7 @@ export default function SettingsPage() {
       setInviteLink(link);
       setShowInviteModal(true);
     } catch (error) {
-      console.error("Generate invite error:", error);
+      console.error("Generate invite error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("inviteError"));
     }
   };

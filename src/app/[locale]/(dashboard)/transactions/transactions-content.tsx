@@ -226,7 +226,7 @@ export function TransactionsContent({
       resetForm();
       router.refresh();
     } catch (error) {
-      console.error("Add transaction error:", error);
+      console.error("Add transaction error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("addError"));
     } finally {
       setIsSubmitting(false);
@@ -266,7 +266,7 @@ export function TransactionsContent({
       resetForm();
       router.refresh();
     } catch (error) {
-      console.error("Edit transaction error:", error);
+      console.error("Edit transaction error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("editError"));
     } finally {
       setIsSubmitting(false);
@@ -290,7 +290,7 @@ export function TransactionsContent({
       setSelectedTransaction(null);
       router.refresh();
     } catch (error) {
-      console.error("Delete transaction error:", error);
+      console.error("Delete transaction error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("deleteError"));
     } finally {
       setIsSubmitting(false);

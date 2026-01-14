@@ -77,6 +77,7 @@
     "calendar": "Kalender",
     "vehicles": "Køretøjer",
     "upcoming": "Kommende udgifter",
+    "advisor": "Økonomisk rådgiver",
     "settings": "Indstillinger",
     "collapse": "Skjul sidepanel",
     "expand": "Vis sidepanel"
@@ -1195,6 +1196,35 @@
       "whatIf": "Hvad hvis...",
       "analyzing": "Analyserer scenarie..."
     }
+  },
+  "advisor": {
+    "title": "Økonomisk rådgiver",
+    "subtitle": "Upload dine kontoudtog og få personlige indsigter",
+    "uploadFiles": "Upload filer",
+    "dropHere": "Træk CSV-filer hertil eller klik for at vælge",
+    "uploadedFiles": "Uploadede filer",
+    "transactions": "transaktioner",
+    "transactionsLoaded": "transaktioner indlæst",
+    "summary": "Resumé",
+    "totalIncome": "Samlet indkomst",
+    "totalExpenses": "Samlede udgifter",
+    "netCashFlow": "Netto pengestrøm",
+    "chatTitle": "AI økonomisk rådgiver",
+    "uploadToStart": "Upload kontoudtog for at starte chatten",
+    "readyToChat": "Klar til at analysere din økonomi! Spørg mig om hvad som helst.",
+    "placeholder": "Spørg om din økonomi...",
+    "analyzing": "Analyserer dine data...",
+    "clearAll": "Ryd alt",
+    "privacyNote": "Dine data sendes til AI til analyse. De gemmes ikke permanent.",
+    "unknownFormat": "Kunne ikke genkende bankformat",
+    "noTransactions": "Ingen transaktioner fundet i filen",
+    "parseError": "Kunne ikke læse filen",
+    "uploadFirst": "Upload venligst filer først",
+    "sendError": "Kunne ikke sende besked",
+    "suggestedQ1": "Hvad er mine største udgifter?",
+    "suggestedQ2": "Hvordan er mit forbrug vs indkomst?",
+    "suggestedQ3": "Hvor kan jeg spare penge?",
+    "suggestedQ4": "Er der bekymrende mønstre?"
   },
   "validation": {
     "required": "Dette felt er påkrævet",

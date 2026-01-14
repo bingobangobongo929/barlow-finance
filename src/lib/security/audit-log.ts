@@ -83,7 +83,7 @@ export async function createAuditLog(params: AuditLogParams): Promise<void> {
     });
   } catch (error) {
     // Log error but don't throw - audit logging should not break the main operation
-    console.error("Failed to create audit log:", error);
+    console.error("Failed to create audit log:", error instanceof Error ? error.message : "Unknown error");
   }
 }
 

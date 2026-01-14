@@ -164,7 +164,7 @@ export function ProjectsContent({
       resetForm();
       router.refresh();
     } catch (error) {
-      console.error("Project error:", error);
+      console.error("Project error:", error instanceof Error ? error.message : "Unknown error");
       showError(isEdit ? t("updateError") : t("addError"));
     } finally {
       setIsSubmitting(false);
@@ -202,7 +202,7 @@ export function ProjectsContent({
       setContributeAmount("");
       router.refresh();
     } catch (error) {
-      console.error("Contribute error:", error);
+      console.error("Contribute error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("contributeError"));
     } finally {
       setIsSubmitting(false);
@@ -226,7 +226,7 @@ export function ProjectsContent({
       setSelectedProject(null);
       router.refresh();
     } catch (error) {
-      console.error("Delete error:", error);
+      console.error("Delete error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("deleteError"));
     } finally {
       setIsSubmitting(false);

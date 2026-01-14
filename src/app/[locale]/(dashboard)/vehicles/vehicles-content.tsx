@@ -154,7 +154,7 @@ export function VehiclesContent({
       resetForm();
       router.refresh();
     } catch (error) {
-      console.error("Vehicle error:", error);
+      console.error("Vehicle error:", error instanceof Error ? error.message : "Unknown error");
       showError(isEdit ? t("updateError") : t("addError"));
     } finally {
       setIsSubmitting(false);
@@ -184,7 +184,7 @@ export function VehiclesContent({
       setSelectedVehicle(null);
       router.refresh();
     } catch (error) {
-      console.error("Delete error:", error);
+      console.error("Delete error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("deleteError"));
     } finally {
       setIsSubmitting(false);

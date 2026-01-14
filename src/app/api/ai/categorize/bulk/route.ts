@@ -30,14 +30,30 @@ export async function POST(request: Request) {
       );
     }
 
-    const { transactions, householdId } = await request.json();
+    const { transactions } = await request.json();
 
-    if (!transactions || !Array.isArray(transactions) || !householdId) {
+    if (!transactions || !Array.isArray(transactions)) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
     }
+
+    // Get user's household - SECURITY: Don't trust client-provided householdId
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("household_id")
+      .eq("id", user.id)
+      .single();
+
+    if (!profile?.household_id) {
+      return NextResponse.json(
+        { error: "User not associated with a household" },
+        { status: 403 }
+      );
+    }
+
+    const householdId = profile.household_id;
 
     // Limit batch size
     const batch = transactions.slice(0, 50);
@@ -104,10 +120,11 @@ export async function POST(request: Request) {
         .map((c) => `${c.id}: ${c.name}`)
         .join(", ");
 
+      // PRIVACY: Don't send amounts to external API
       const transactionsList = transactionsNeedingAI
         .map(
           (tx, i) =>
-            `${i + 1}. [${tx.id}] "${tx.description}" (${tx.type}, ${tx.amount} DKK)`
+            `${i + 1}. [${tx.id}] "${tx.description}" (${tx.type})`
         )
         .join("\n");
 
@@ -158,7 +175,7 @@ If uncertain, use "null" as category_id with confidence 0.`,
 
     return NextResponse.json({ results });
   } catch (error) {
-    console.error("Bulk AI categorization error:", error);
+    console.error("Bulk AI categorization error:", error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json(
       { error: "Failed to categorize transactions" },
       { status: 500 }

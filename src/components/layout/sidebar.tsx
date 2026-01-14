@@ -13,6 +13,7 @@ import {
   Calendar,
   Car,
   Clock,
+  Sparkles,
   Settings,
   ChevronLeft,
   ChevronRight,
@@ -38,6 +39,7 @@ const navItems: NavItem[] = [
   { href: "/calendar", icon: Calendar, labelKey: "calendar" },
   { href: "/vehicles", icon: Car, labelKey: "vehicles" },
   { href: "/upcoming", icon: Clock, labelKey: "upcoming" },
+  { href: "/advisor", icon: Sparkles, labelKey: "advisor" },
   { href: "/settings", icon: Settings, labelKey: "settings" },
 ];
 

@@ -183,7 +183,7 @@ export default function UpcomingExpensesPage() {
 
       setExpenses(newData || []);
     } catch (error) {
-      console.error("Expense error:", error);
+      console.error("Expense error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("saveError"));
     } finally {
       setIsSubmitting(false);

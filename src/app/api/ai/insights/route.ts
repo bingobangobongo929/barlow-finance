@@ -26,14 +26,23 @@ export async function POST(request: Request) {
       );
     }
 
-    const { householdId, language = "en" } = await request.json();
+    const { language = "en" } = await request.json();
 
-    if (!householdId) {
+    // Get user's household - SECURITY: Don't trust client-provided householdId
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("household_id")
+      .eq("id", user.id)
+      .single();
+
+    if (!profile?.household_id) {
       return NextResponse.json(
-        { error: "Missing household ID" },
-        { status: 400 }
+        { error: "User not associated with a household" },
+        { status: 403 }
       );
     }
+
+    const householdId = profile.household_id;
 
     // Get language preference - default to English
     const lang = language === "da" ? "Danish" : "English";
@@ -136,7 +145,7 @@ Example (in English):
         insights = JSON.parse(jsonMatch[0]);
       }
     } catch (parseError) {
-      console.error("Failed to parse AI insights:", parseError);
+      console.error("Failed to parse AI insights:", parseError instanceof Error ? parseError.message : "Unknown error");
     }
 
     // Store insights in database
@@ -156,7 +165,7 @@ Example (in English):
 
     return NextResponse.json({ insights });
   } catch (error) {
-    console.error("AI insights error:", error);
+    console.error("AI insights error:", error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json(
       { error: "Failed to generate insights" },
       { status: 500 }

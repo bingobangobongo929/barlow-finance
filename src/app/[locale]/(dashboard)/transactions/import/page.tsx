@@ -115,7 +115,7 @@ export default function TransactionImportPage() {
       setDetectedFormat(detected?.id || "");
       setBankFormat(detected?.id || "");
     } catch (error) {
-      console.error("File read error:", error);
+      console.error("File read error:", error instanceof Error ? error.message : "Unknown error");
       setParseError(t("fileReadError"));
     } finally {
       setIsLoading(false);
@@ -153,7 +153,7 @@ export default function TransactionImportPage() {
       setParsedTransactions(preview);
       setStep("mapping");
     } catch (error) {
-      console.error("Parse error:", error);
+      console.error("Parse error:", error instanceof Error ? error.message : "Unknown error");
       setParseError(t("parseError"));
     } finally {
       setIsLoading(false);
@@ -215,7 +215,7 @@ export default function TransactionImportPage() {
         .select();
 
       if (error) {
-        console.error("Import batch error:", error);
+        console.error("Import batch error:", error instanceof Error ? error.message : "Unknown error");
         results.failed += batch.length;
       } else {
         results.success += data?.length || 0;

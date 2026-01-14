@@ -186,7 +186,7 @@ export default function VehicleDetailPage() {
 
       setMaintenance(newData || []);
     } catch (error) {
-      console.error("Maintenance error:", error);
+      console.error("Maintenance error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("maintenanceError"));
     } finally {
       setIsSubmitting(false);

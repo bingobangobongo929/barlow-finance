@@ -155,7 +155,7 @@ export function BudgetsContent({
       resetForm();
       router.refresh();
     } catch (error) {
-      console.error("Budget error:", error);
+      console.error("Budget error:", error instanceof Error ? error.message : "Unknown error");
       showError(isEdit ? t("updateError") : t("addError"));
     } finally {
       setIsSubmitting(false);
@@ -179,7 +179,7 @@ export function BudgetsContent({
       setSelectedBudget(null);
       router.refresh();
     } catch (error) {
-      console.error("Delete error:", error);
+      console.error("Delete error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("deleteError"));
     } finally {
       setIsSubmitting(false);

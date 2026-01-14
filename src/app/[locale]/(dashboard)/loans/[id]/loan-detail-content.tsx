@@ -154,7 +154,7 @@ export function LoanDetailContent({
       });
       router.refresh();
     } catch (error) {
-      console.error("Payment error:", error);
+      console.error("Payment error:", error instanceof Error ? error.message : "Unknown error");
       showError(t("paymentError"));
     } finally {
       setIsSubmitting(false);

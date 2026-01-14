@@ -331,10 +331,10 @@ export function LoanDetailContent({
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList>
-          <TabsTrigger value="overview">{t("tabs.overview")}</TabsTrigger>
-          <TabsTrigger value="schedule">{t("tabs.schedule")}</TabsTrigger>
-          <TabsTrigger value="payments">{t("tabs.payments")}</TabsTrigger>
-          <TabsTrigger value="scenario">{t("tabs.scenario")}</TabsTrigger>
+          <TabsTrigger value="overview">{t("detail.overview")}</TabsTrigger>
+          <TabsTrigger value="schedule">{t("detail.amortization")}</TabsTrigger>
+          <TabsTrigger value="payments">{t("detail.payments")}</TabsTrigger>
+          <TabsTrigger value="scenario">{t("detail.payoffSimulator")}</TabsTrigger>
         </TabsList>
 
         {/* Overview Tab */}
@@ -596,11 +596,11 @@ export function LoanDetailContent({
         <TabsContent value="scenario" className="mt-6 space-y-6">
           <Card className="p-6">
             <h3 className="mb-4 font-heading text-lg font-semibold text-[var(--text-primary)]">
-              {t("whatIf")}
+              {t("simulator.title")}
             </h3>
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="form-group">
-                <Label htmlFor="extraMonthly">{t("extraMonthlyPayment")}</Label>
+                <Label htmlFor="extraMonthly">{t("simulator.extraPayment")}</Label>
                 <Input
                   id="extraMonthly"
                   type="number"
@@ -616,7 +616,7 @@ export function LoanDetailContent({
                 />
               </div>
               <div className="form-group">
-                <Label htmlFor="oneTimePayment">{t("oneTimePayment")}</Label>
+                <Label htmlFor="oneTimePayment">{t("simulator.oneTimePayment")}</Label>
                 <Input
                   id="oneTimePayment"
                   type="number"
@@ -632,7 +632,7 @@ export function LoanDetailContent({
                 />
               </div>
               <div className="form-group">
-                <Label htmlFor="oneTimeDate">{t("oneTimeDate")}</Label>
+                <Label htmlFor="oneTimeDate">{t("simulator.oneTimeDate")}</Label>
                 <Input
                   id="oneTimeDate"
                   type="date"
@@ -648,7 +648,7 @@ export function LoanDetailContent({
             </div>
             <Button className="mt-4" onClick={calculateScenario}>
               <Calculator className="mr-2 h-4 w-4" />
-              {t("calculateScenario")}
+              {t("simulator.calculate")}
             </Button>
           </Card>
 
@@ -657,7 +657,7 @@ export function LoanDetailContent({
               <div className="grid gap-4 sm:grid-cols-3">
                 <Card className="p-4">
                   <p className="text-sm text-[var(--text-secondary)]">
-                    {t("newPayoffDate")}
+                    {t("simulator.newPayoff")}
                   </p>
                   <p className="mt-1 text-xl font-bold text-[var(--accent-success)]">
                     {formatDate(
@@ -668,7 +668,7 @@ export function LoanDetailContent({
                 </Card>
                 <Card className="p-4">
                   <p className="text-sm text-[var(--text-secondary)]">
-                    {t("paymentsSaved")}
+                    {t("simulator.timeSaved")}
                   </p>
                   <p className="mt-1 text-xl font-bold text-[var(--accent-success)]">
                     {schedule.length - scenarioSchedule.length}
@@ -676,7 +676,7 @@ export function LoanDetailContent({
                 </Card>
                 <Card className="p-4">
                   <p className="text-sm text-[var(--text-secondary)]">
-                    {t("interestSaved")}
+                    {t("simulator.interestSaved")}
                   </p>
                   <p className="mt-1 text-xl font-bold text-[var(--accent-success)]">
                     {formatCurrency(
@@ -691,7 +691,7 @@ export function LoanDetailContent({
 
               <Card className="p-6">
                 <h3 className="mb-4 font-heading text-lg font-semibold text-[var(--text-primary)]">
-                  {t("comparisonChart")}
+                  {t("simulator.comparison")}
                 </h3>
                 <div className="h-[300px]">
                   <ResponsiveContainer width="100%" height="100%">
@@ -715,7 +715,7 @@ export function LoanDetailContent({
                       <Line
                         type="monotone"
                         dataKey="originalBalance"
-                        name={t("originalSchedule")}
+                        name={t("simulator.originalSchedule")}
                         stroke="var(--text-tertiary)"
                         strokeDasharray="5 5"
                         dot={false}
@@ -723,7 +723,7 @@ export function LoanDetailContent({
                       <Line
                         type="monotone"
                         dataKey="balance"
-                        name={t("newSchedule")}
+                        name={t("simulator.newSchedule")}
                         stroke="var(--accent-success)"
                         strokeWidth={2}
                         dot={false}

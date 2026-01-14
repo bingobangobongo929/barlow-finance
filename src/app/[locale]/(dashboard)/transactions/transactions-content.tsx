@@ -417,7 +417,7 @@ export function TransactionsContent({
             className={showFilters ? "bg-[var(--bg-tertiary)]" : ""}
           >
             <Filter className="mr-2 h-4 w-4" />
-            {t("filters")}
+            {t("showFilters")}
           </Button>
         </div>
 
@@ -425,20 +425,20 @@ export function TransactionsContent({
         {showFilters && (
           <div className="mt-4 grid gap-4 border-t border-[var(--border-primary)] pt-4 sm:grid-cols-2 lg:grid-cols-5">
             <div>
-              <Label className="mb-2 block text-xs">{t("type")}</Label>
+              <Label className="mb-2 block text-xs">{t("filters.type")}</Label>
               <Select
                 value={filters.type}
                 onChange={(e) => updateFilters({ type: e.target.value })}
               >
                 <option value="all">{tCommon("all")}</option>
-                <option value="income">{t("income")}</option>
-                <option value="expense">{t("expense")}</option>
-                <option value="transfer">{t("transfer")}</option>
+                <option value="income">{t("types.income")}</option>
+                <option value="expense">{t("types.expense")}</option>
+                <option value="transfer">{t("types.transfer")}</option>
               </Select>
             </div>
 
             <div>
-              <Label className="mb-2 block text-xs">{t("category")}</Label>
+              <Label className="mb-2 block text-xs">{t("filters.category")}</Label>
               <Select
                 value={filters.category}
                 onChange={(e) => updateFilters({ category: e.target.value })}
@@ -453,7 +453,7 @@ export function TransactionsContent({
             </div>
 
             <div>
-              <Label className="mb-2 block text-xs">{t("account")}</Label>
+              <Label className="mb-2 block text-xs">{t("filters.account")}</Label>
               <Select
                 value={filters.account}
                 onChange={(e) => updateFilters({ account: e.target.value })}
@@ -468,7 +468,7 @@ export function TransactionsContent({
             </div>
 
             <div>
-              <Label className="mb-2 block text-xs">{t("startDate")}</Label>
+              <Label className="mb-2 block text-xs">{tCommon("from")}</Label>
               <Input
                 type="date"
                 value={filters.startDate}
@@ -477,7 +477,7 @@ export function TransactionsContent({
             </div>
 
             <div>
-              <Label className="mb-2 block text-xs">{t("endDate")}</Label>
+              <Label className="mb-2 block text-xs">{tCommon("to")}</Label>
               <Input
                 type="date"
                 value={filters.endDate}
@@ -497,7 +497,7 @@ export function TransactionsContent({
           <div className="mt-4 flex flex-wrap gap-2">
             {filters.type !== "all" && (
               <Badge variant="default" className="flex items-center gap-1">
-                {t(filters.type)}
+                {t(`types.${filters.type}`)}
                 <button onClick={() => updateFilters({ type: "all" })}>
                   <X className="h-3 w-3" />
                 </button>
@@ -521,7 +521,7 @@ export function TransactionsContent({
             )}
             {filters.startDate && (
               <Badge variant="default" className="flex items-center gap-1">
-                {t("from")}: {formatDate(filters.startDate, locale)}
+                {tCommon("from")}: {formatDate(filters.startDate, locale)}
                 <button onClick={() => updateFilters({ startDate: "" })}>
                   <X className="h-3 w-3" />
                 </button>
@@ -529,7 +529,7 @@ export function TransactionsContent({
             )}
             {filters.endDate && (
               <Badge variant="default" className="flex items-center gap-1">
-                {t("to")}: {formatDate(filters.endDate, locale)}
+                {tCommon("to")}: {formatDate(filters.endDate, locale)}
                 <button onClick={() => updateFilters({ endDate: "" })}>
                   <X className="h-3 w-3" />
                 </button>
@@ -554,20 +554,20 @@ export function TransactionsContent({
             <thead className="border-b border-[var(--border-primary)] bg-[var(--bg-secondary)]">
               <tr>
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase text-[var(--text-secondary)]">
-                  {t("description")}
+                  {t("table.description")}
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase text-[var(--text-secondary)]">
-                  {t("category")}
+                  {t("table.category")}
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-medium uppercase text-[var(--text-secondary)]">
-                  {t("account")}
+                  {t("table.account")}
                 </th>
                 <th className="px-4 py-3 text-right">
                   <button
                     onClick={() => handleSort("amount")}
                     className="flex items-center justify-end gap-1 text-xs font-medium uppercase text-[var(--text-secondary)]"
                   >
-                    {t("amount")}
+                    {t("table.amount")}
                     <ArrowUpDown className="h-3 w-3" />
                   </button>
                 </th>
@@ -640,18 +640,17 @@ export function TransactionsContent({
                         <td className="px-4 py-3">
                           {transaction.category ? (
                             <div
-                              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium"
+                              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold text-white shadow-sm"
                               style={{
-                                backgroundColor: `${transaction.category.color}20`,
-                                color: transaction.category.color,
+                                backgroundColor: transaction.category.color,
                               }}
                             >
                               <span>{transaction.category.icon}</span>
                               <span>{getCategoryName(transaction.category)}</span>
                             </div>
                           ) : (
-                            <span className="text-sm text-[var(--text-muted)]">
-                              {t("uncategorized")}
+                            <span className="rounded-full bg-[var(--bg-tertiary)] px-2.5 py-1 text-xs text-[var(--text-secondary)]">
+                              {t("categorize.uncategorized")}
                             </span>
                           )}
                         </td>
@@ -744,7 +743,7 @@ export function TransactionsContent({
         <div className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <Label htmlFor="transaction_date">{t("date")}</Label>
+              <Label htmlFor="transaction_date">{t("form.date")}</Label>
               <Input
                 id="transaction_date"
                 type="date"
@@ -755,7 +754,7 @@ export function TransactionsContent({
               />
             </div>
             <div>
-              <Label htmlFor="type">{t("type")}</Label>
+              <Label htmlFor="type">{t("form.type")}</Label>
               <Select
                 id="type"
                 value={formData.type}
@@ -767,28 +766,27 @@ export function TransactionsContent({
                   })
                 }
               >
-                <option value="expense">{t("expense")}</option>
-                <option value="income">{t("income")}</option>
-                <option value="transfer">{t("transfer")}</option>
+                <option value="expense">{t("types.expense")}</option>
+                <option value="income">{t("types.income")}</option>
+                <option value="transfer">{t("types.transfer")}</option>
               </Select>
             </div>
           </div>
 
           <div>
-            <Label htmlFor="description">{t("description")}</Label>
+            <Label htmlFor="description">{t("form.description")}</Label>
             <Input
               id="description"
               value={formData.description}
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
               }
-              placeholder={t("descriptionPlaceholder")}
             />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <Label htmlFor="amount">{t("amount")}</Label>
+              <Label htmlFor="amount">{t("form.amount")}</Label>
               <Input
                 id="amount"
                 type="number"
@@ -802,7 +800,7 @@ export function TransactionsContent({
               />
             </div>
             <div>
-              <Label htmlFor="account_id">{t("account")}</Label>
+              <Label htmlFor="account_id">{t("form.account")}</Label>
               <Select
                 id="account_id"
                 value={formData.account_id}
@@ -810,7 +808,7 @@ export function TransactionsContent({
                   setFormData({ ...formData, account_id: e.target.value })
                 }
               >
-                <option value="">{t("selectAccount")}</option>
+                <option value="">{t("import.selectAccount")}</option>
                 {accounts.map((acc) => (
                   <option key={acc.id} value={acc.id}>
                     {acc.name}
@@ -822,7 +820,7 @@ export function TransactionsContent({
 
           {formData.type !== "transfer" && (
             <div>
-              <Label htmlFor="category_id">{t("category")}</Label>
+              <Label htmlFor="category_id">{t("form.category")}</Label>
               <Select
                 id="category_id"
                 value={formData.category_id}
@@ -830,7 +828,7 @@ export function TransactionsContent({
                   setFormData({ ...formData, category_id: e.target.value })
                 }
               >
-                <option value="">{t("selectCategory")}</option>
+                <option value="">{t("categorize.selectCategory")}</option>
                 {filteredCategories.map((cat) => (
                   <option key={cat.id} value={cat.id}>
                     {cat.icon} {getCategoryName(cat)}
@@ -841,14 +839,13 @@ export function TransactionsContent({
           )}
 
           <div>
-            <Label htmlFor="notes">{t("notes")}</Label>
+            <Label htmlFor="notes">{t("form.notes")}</Label>
             <Textarea
               id="notes"
               value={formData.notes}
               onChange={(e) =>
                 setFormData({ ...formData, notes: e.target.value })
               }
-              placeholder={t("notesPlaceholder")}
               rows={3}
             />
           </div>
@@ -864,7 +861,7 @@ export function TransactionsContent({
               className="h-4 w-4 rounded border-[var(--border-primary)] bg-[var(--bg-primary)] text-[var(--accent-primary)]"
             />
             <Label htmlFor="is_recurring" className="cursor-pointer">
-              {t("markRecurring")}
+              {t("form.isRecurring")}
             </Label>
           </div>
 
@@ -888,7 +885,7 @@ export function TransactionsContent({
         <div className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <Label htmlFor="edit_transaction_date">{t("date")}</Label>
+              <Label htmlFor="edit_transaction_date">{t("form.date")}</Label>
               <Input
                 id="edit_transaction_date"
                 type="date"
@@ -899,7 +896,7 @@ export function TransactionsContent({
               />
             </div>
             <div>
-              <Label htmlFor="edit_type">{t("type")}</Label>
+              <Label htmlFor="edit_type">{t("form.type")}</Label>
               <Select
                 id="edit_type"
                 value={formData.type}
@@ -911,15 +908,15 @@ export function TransactionsContent({
                   })
                 }
               >
-                <option value="expense">{t("expense")}</option>
-                <option value="income">{t("income")}</option>
-                <option value="transfer">{t("transfer")}</option>
+                <option value="expense">{t("types.expense")}</option>
+                <option value="income">{t("types.income")}</option>
+                <option value="transfer">{t("types.transfer")}</option>
               </Select>
             </div>
           </div>
 
           <div>
-            <Label htmlFor="edit_description">{t("description")}</Label>
+            <Label htmlFor="edit_description">{t("form.description")}</Label>
             <Input
               id="edit_description"
               value={formData.description}
@@ -931,7 +928,7 @@ export function TransactionsContent({
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <Label htmlFor="edit_amount">{t("amount")}</Label>
+              <Label htmlFor="edit_amount">{t("form.amount")}</Label>
               <Input
                 id="edit_amount"
                 type="number"
@@ -944,7 +941,7 @@ export function TransactionsContent({
               />
             </div>
             <div>
-              <Label htmlFor="edit_account_id">{t("account")}</Label>
+              <Label htmlFor="edit_account_id">{t("form.account")}</Label>
               <Select
                 id="edit_account_id"
                 value={formData.account_id}
@@ -952,7 +949,7 @@ export function TransactionsContent({
                   setFormData({ ...formData, account_id: e.target.value })
                 }
               >
-                <option value="">{t("selectAccount")}</option>
+                <option value="">{t("import.selectAccount")}</option>
                 {accounts.map((acc) => (
                   <option key={acc.id} value={acc.id}>
                     {acc.name}
@@ -964,7 +961,7 @@ export function TransactionsContent({
 
           {formData.type !== "transfer" && (
             <div>
-              <Label htmlFor="edit_category_id">{t("category")}</Label>
+              <Label htmlFor="edit_category_id">{t("form.category")}</Label>
               <Select
                 id="edit_category_id"
                 value={formData.category_id}
@@ -972,7 +969,7 @@ export function TransactionsContent({
                   setFormData({ ...formData, category_id: e.target.value })
                 }
               >
-                <option value="">{t("selectCategory")}</option>
+                <option value="">{t("categorize.selectCategory")}</option>
                 {filteredCategories.map((cat) => (
                   <option key={cat.id} value={cat.id}>
                     {cat.icon} {getCategoryName(cat)}
@@ -983,7 +980,7 @@ export function TransactionsContent({
           )}
 
           <div>
-            <Label htmlFor="edit_notes">{t("notes")}</Label>
+            <Label htmlFor="edit_notes">{t("form.notes")}</Label>
             <Textarea
               id="edit_notes"
               value={formData.notes}
@@ -1005,7 +1002,7 @@ export function TransactionsContent({
               className="h-4 w-4 rounded border-[var(--border-primary)] bg-[var(--bg-primary)] text-[var(--accent-primary)]"
             />
             <Label htmlFor="edit_is_recurring" className="cursor-pointer">
-              {t("markRecurring")}
+              {t("form.isRecurring")}
             </Label>
           </div>
 

@@ -215,10 +215,9 @@ export function DashboardContent({
                           <div className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
                             {transaction.category && (
                               <span
-                                className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5"
+                                className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-white font-medium shadow-sm"
                                 style={{
-                                  backgroundColor: `${transaction.category.color}15`,
-                                  color: transaction.category.color,
+                                  backgroundColor: transaction.category.color,
                                 }}
                               >
                                 <span>{transaction.category.icon}</span>

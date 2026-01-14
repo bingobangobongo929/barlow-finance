@@ -39,7 +39,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: https: blob:",
+      "img-src 'self' data: https: blob: https://logo.clearbit.com",
       "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.anthropic.com",
       "frame-ancestors 'self'",
       "form-action 'self'",
@@ -62,6 +62,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "*.supabase.co",
+      },
+      {
+        protocol: "https",
+        hostname: "logo.clearbit.com",
       },
     ],
   },

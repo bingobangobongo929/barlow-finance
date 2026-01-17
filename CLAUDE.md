@@ -11,10 +11,14 @@
 This is a FINANCE APP. Security is mandatory:
 - RLS on every table
 - Input validation on every endpoint
-- Secure headers configured
-- No sensitive data in logs
-- Rate limiting on API routes
+- Secure headers configured (CSP without unsafe-eval)
+- No sensitive data in logs (only log error.message, never full objects)
+- Rate limiting on API routes (database-backed for persistence)
 - Audit logging for sensitive actions
+- NEVER trust client-provided householdId - always fetch from user's profile
+- Whitelist-based redirect validation (no open redirects)
+- No external API calls that leak user data (e.g., no Clearbit)
+- Household creation limits (max 3 per user)
 
 ## Project Overview
 Household finance management for a Danish family (Ed and wife). Full transparency between spouses. DKK currency only. Bilingual: English and Danish with toggle.
@@ -151,6 +155,9 @@ barlow-finance/
 │   │   │       │   ├── page.tsx
 │   │   │       │   └── [id]/page.tsx
 │   │   │       ├── upcoming/page.tsx
+│   │   │       ├── advisor/
+│   │   │       │   ├── page.tsx
+│   │   │       │   └── advisor-content.tsx
 │   │   │       └── settings/page.tsx
 │   │   ├── auth/
 │   │   │   └── callback/route.ts
@@ -162,7 +169,8 @@ barlow-finance/
 │   │   │       ├── categorize/
 │   │   │       │   ├── route.ts
 │   │   │       │   └── bulk/route.ts
-│   │   │       └── insights/route.ts
+│   │   │       ├── insights/route.ts
+│   │   │       └── advisor/route.ts
 │   │   ├── globals.css
 │   │   └── layout.tsx
 │   ├── components/
@@ -180,7 +188,8 @@ barlow-finance/
 │   │   ├── constants/
 │   │   ├── security/
 │   │   ├── brand-logos.tsx
-│   │   └── merchant-icons.tsx
+│   │   ├── merchant-icons.tsx
+│   │   └── financial-analysis.ts
 │   ├── i18n/
 │   │   ├── config.ts
 │   │   ├── request.ts
@@ -188,7 +197,8 @@ barlow-finance/
 │   └── middleware.ts
 ├── supabase/
 │   └── migrations/
-│       └── 001_initial_schema.sql
+│       ├── 001_initial_schema.sql
+│       └── 002_security_fixes.sql
 ├── public/
 ├── .env.local.example
 ├── CLAUDE.md
@@ -259,6 +269,14 @@ INDEX: (household_id, created_at DESC)
 id UUID PK, household_id FK, token TEXT UNIQUE, email TEXT, created_by FK(profiles), expires_at TIMESTAMPTZ, used_at TIMESTAMPTZ, created_at
 
 INDEX: (token) WHERE used_at IS NULL
+
+### rate_limits (Security)
+id UUID PK, user_id UUID NOT NULL, endpoint TEXT NOT NULL, request_count INT DEFAULT 1, window_start TIMESTAMPTZ DEFAULT NOW(), created_at
+
+UNIQUE(user_id, endpoint)
+INDEX: (window_start) -- for cleanup
+
+Note: profiles table also has `households_created INT DEFAULT 0` for limiting household creation per user.
 
 ### ROW LEVEL SECURITY
 Enable on EVERY table. Users can only access their household's data. Test thoroughly.
@@ -382,6 +400,34 @@ const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 // WRONG
 const timeoutRef = useRef<NodeJS.Timeout>();
 ```
+
+## Financial Advisor Feature
+
+The `/advisor` page allows users to upload CSV bank statements and have an AI-powered conversation about their finances BEFORE importing data.
+
+### Key Design Decisions
+- **Client-side parsing**: CSV files are parsed in the browser, data stays in React state
+- **Explicit consent**: User must click send to transmit data to AI
+- **Full data for insights**: Unlike auto-categorization, the advisor receives full transaction details (merchant names, amounts, dates) for meaningful analysis
+- **No automatic storage**: Data only persists in browser session until explicitly imported
+
+### Data Flow
+```
+CSV Files → Parse (client-side) → React State → User clicks Send → API sends context to Claude → Response
+                                                          ↓
+                                               Optional: Import to DB
+```
+
+### Financial Analysis Utilities (`src/lib/financial-analysis.ts`)
+- `calculateFinancialSummary()` - Income, expenses, net cash flow, averages
+- `groupByMerchant()` - Top spending categories by merchant
+- `getMonthlyBreakdown()` - Month-by-month income/expense breakdown
+- `identifyRecurringTransactions()` - Detect subscriptions and regular payments
+- `detectAnomalies()` - Flag unusual spending spikes or patterns
+- `prepareFinancialContext()` - Bundle all analysis for AI context
+
+### Rate Limiting
+The advisor uses the `ai-advisor` rate limit: 30 requests per 60 seconds per user.
 
 ## Remember
 - Check CLAUDE.md before EVERY file
